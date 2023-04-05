@@ -1,17 +1,23 @@
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
+
+
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-	Button btOK = new Button("Hello World");
-	Scene scene = new Scene(btOK, 200, 250);
+	public void start(Stage primaryStage) throws IOException {
+	
+	//creating a scene and opening a scene
+	Parent root = FXMLLoader.load(getClass().getResource("FacultyLogin.fxml"));
+	Scene scene = new Scene(root, 600, 400);
 	primaryStage.setTitle("MyJavaFX");
 	primaryStage.setScene(scene);
 	primaryStage.show();
