@@ -25,7 +25,7 @@ public class FacultyLoginController {
 	public void Login(ActionEvent action) throws IOException {
 		if(txtUserName.getText().equals("user")&& txtPassword.getText().equals("pass")) {
 			lblStatus.setText("Login Sucess!");
-			Stage primaryStage = new Stage();
+			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 			Parent root = FXMLLoader.load(getClass().getResource("FacultyLandingPage.fxml"));
 			Scene scene = new Scene(root, 600, 400);
 			primaryStage.setTitle("MyJavaFX");
