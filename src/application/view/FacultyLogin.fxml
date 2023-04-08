@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="186.0" fitWidth="350.0" layoutX="26.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/quizly-logo.png" />
+            <Image url="@../../Images/quizly-logo.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="305.0" layoutY="41.0" prefHeight="308.0" prefWidth="285.0" style="-fx-background-color: #a3a2a0;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">

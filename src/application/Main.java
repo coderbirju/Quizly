@@ -16,7 +16,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 	
 	//creating a scene and opening a scene
-	Parent root = FXMLLoader.load(getClass().getResource("FacultyLogin.fxml"));
+//	Parent root = FXMLLoader.load(getClass().getResource("FacultyLogin.fxml"));
+	 Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLogin.fxml"));
 	Scene scene = new Scene(root, 600, 400);
 	primaryStage.setTitle("MyJavaFX");
 	primaryStage.setScene(scene);
