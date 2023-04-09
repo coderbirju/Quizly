@@ -3,9 +3,12 @@ module Quizly {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.base;
-//	exports application.controller;
-//	
-//	opens application.controller to javafx.graphics, javafx.fxml;
-//    opens application.view to javafx.graphics, javafx.fxml;
+	requires org.mongodb.driver.sync.client;
+	requires org.mongodb.bson;
+	
+	opens application.controller to javafx.graphics, javafx.fxml;
+//	opens application.model to org.mongodb.driver.sync.client, com.mongodb.client.MongoClients, com.mongodb.client.MongoDatabase; 
+    opens application.view to javafx.graphics, javafx.fxml;
     opens application to javafx.graphics, javafx.fxml;
 }
+//--add-modules javafx.controls,javafx.fxml
