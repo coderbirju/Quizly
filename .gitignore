@@ -63,3 +63,4 @@ crashlytics-build.properties
 
 .settings/
 bin/.DS_Store
+.classpath

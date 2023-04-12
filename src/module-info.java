@@ -5,6 +5,7 @@ module Quizly {
 	requires javafx.base;
 	requires org.mongodb.driver.sync.client;
 	requires org.mongodb.bson;
+	requires org.mongodb.driver.core;
 	
 	opens application.controller to javafx.graphics, javafx.fxml;
 //	opens application.model to org.mongodb.driver.sync.client, com.mongodb.client.MongoClients, com.mongodb.client.MongoDatabase; 
