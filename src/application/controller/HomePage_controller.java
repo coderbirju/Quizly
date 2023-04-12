@@ -1,4 +1,5 @@
 package application.controller;
+
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -12,27 +13,14 @@ import javafx.stage.Stage;
 public class HomePage_controller {
 
     @FXML
-    private Button btnFaculty;
+    private Button btnStart;
 
     @FXML
-    private Button btnStudent;
-
-    @FXML
-    void FacultyLogin(ActionEvent event) throws IOException {
-    	Stage primaryStage = (Stage) btnFaculty.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLogin.fxml"));
+    void click(ActionEvent event) throws IOException {
+    	Stage primaryStage = (Stage) btnStart.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
 		Scene scene = new Scene(root, 600, 400);
-		primaryStage.setTitle("MyJavaFX");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-    }
-
-    @FXML
-    void StudentLogin(ActionEvent event) throws IOException {
-    	Stage primaryStage = (Stage) btnFaculty.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource(".fxml"));
-		Scene scene = new Scene(root, 600, 400);
-		primaryStage.setTitle("MyJavaFX");
+		primaryStage.setTitle("Quizly");
 		primaryStage.setScene(scene);
 		primaryStage.show();
     }

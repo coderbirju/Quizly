@@ -37,7 +37,7 @@
                   <Font name="System Bold" size="14.0" />
                </font></Button>
             <TextField fx:id="txtUserName" layoutX="83.0" layoutY="174.0" promptText="Username" />
-            <Label fx:id="lblStatus" layoutX="112.0" layoutY="271.0" prefHeight="17.0" prefWidth="99.0" text=" " textFill="#d30a0a" />
+            <Label fx:id="lblStatus" layoutX="68.0" layoutY="273.0" prefHeight="34.0" prefWidth="195.0" text=" " textFill="#d30a0a" />
             <FontAwesomeIcon glyphName="USERS" layoutX="140.0" layoutY="54.0" size="35" />
             <Label layoutX="105.0" layoutY="71.0" text="User Login">
                <font>

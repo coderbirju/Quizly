@@ -9,25 +9,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003366;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.HomePage_controller">
    <children>
-      <Text fill="WHITE" layoutX="48.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Quizly " wrappingWidth="440.67431640625">
+      <Text fill="#ff9966" layoutX="37.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Quizly " wrappingWidth="440.67431640625">
          <font>
             <Font name="Arial Bold Italic" size="48.0" />
          </font>
       </Text>
-      <Button fx:id="btnFaculty" layoutX="243.0" layoutY="162.0" mnemonicParsing="false" onAction="#FacultyLogin" style="-fx-background-color: #ff9966;" text="Faculty " textFill="#fffefe">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnStudent" layoutX="242.0" layoutY="242.0" mnemonicParsing="false" onAction="#StudentLogin" style="-fx-background-color: ff9966;" text="Student" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="61.0" fitWidth="60.0" layoutX="478.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="95.0" layoutX="478.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/quizly-question%20mark.png" />
+            <Image url="@../../Images/quizly-question%20mark.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnStart" layoutX="249.0" layoutY="237.0" mnemonicParsing="false" onAction="#click" prefHeight="26.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" text="Start">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

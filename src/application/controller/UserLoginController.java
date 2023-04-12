@@ -44,26 +44,35 @@ public class UserLoginController {
 		String username = txtUserName.getText();
 		String password = txtPassword.getText();
 		String role ="";
-		if(radioFaculty.isSelected()) {
-			role = "PROFFESSOR";
+		
+		if(username.isEmpty()||password.isEmpty()||(radioFaculty.isSelected()==false&&radioStudent.isSelected()==false)) {
+			lblStatus.setText("     One or more field is empty!");
 		}
+		
 		else {
-			role = "STUDENT";
+			if(radioFaculty.isSelected()) {
+				role = "PROFFESSOR";
+			}
+			else {
+				role = "STUDENT";
+			}
+			
+			User user = User.getInstance(username, password, role);
+			
+			if(user != null) {
+				lblStatus.setText("Login Sucess!");
+				Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
+				Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
+				Scene scene = new Scene(root, 600, 400);
+				primaryStage.setTitle("MyJavaFX");
+				primaryStage.setScene(scene);
+				primaryStage.show();
+			} else {
+				lblStatus.setText("Incorrect Username or password!");
+			}
 		}
 		
-		User user = User.getInstance(username, password, role);
-		
-		if(user != null) {
-			lblStatus.setText("Login Sucess!");
-			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
-			Scene scene = new Scene(root, 600, 400);
-			primaryStage.setTitle("MyJavaFX");
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} else {
-			lblStatus.setText("Incorrect Username or password!");
-		}
+	
     }
 
 }
