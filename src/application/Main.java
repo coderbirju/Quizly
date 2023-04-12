@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		
 //	mongoConnect = ConnectToDB.getInstance();
-	Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLogin.fxml"));
+	Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
 	Scene scene = new Scene(root, 600, 400);
 	primaryStage.setTitle("MyJavaFX");
 	primaryStage.setScene(scene);

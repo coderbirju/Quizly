@@ -8,29 +8,50 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class FacultyLoginController {
-	
-	@FXML
-	private Label lblStatus;
-	
-	@FXML
-	private TextField txtUserName;
-	
-	@FXML
-	private TextField txtPassword;
-	
+public class UserLoginController {
 
-	
-	public void Login(ActionEvent action) throws IOException {
-		
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    private Label lblStatus;
+
+    @FXML
+    private RadioButton radioFaculty;
+
+    @FXML
+    private RadioButton radioStudent;
+    
+    @FXML
+    private ToggleGroup tgRole;
+    
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    void Login(ActionEvent event) throws IOException {
 		String username = txtUserName.getText();
 		String password = txtPassword.getText();
+		String role ="";
+		if(radioFaculty.isSelected()) {
+			role = "PROFFESSOR";
+		}
+		else {
+			role = "STUDENT";
+		}
 		
-		User user = User.getInstance(username, password, "PROFFESSOR");
+		User user = User.getInstance(username, password, role);
 		
 		if(user != null) {
 			lblStatus.setText("Login Sucess!");
@@ -43,6 +64,11 @@ public class FacultyLoginController {
 		} else {
 			lblStatus.setText("Incorrect Username or password!");
 		}
-	}
-	
+    }
+
 }
+
+
+
+
+
