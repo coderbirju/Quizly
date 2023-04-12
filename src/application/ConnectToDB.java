@@ -1,6 +1,5 @@
 package application;
 
-
 import java.util.ArrayList;
 
 import com.mongodb.client.MongoClient;
@@ -11,13 +10,15 @@ import org.bson.Document;
 
 public class ConnectToDB {
 
+    private static ConnectToDB instance;
+
     private static final String DATABASE_NAME = "Quizly";
 
     private MongoClient mongoClient;
     private MongoDatabase database;
     private MongoCollection<Document> collection;
 
-    public ConnectToDB() {
+    private ConnectToDB() {
         // Create a new MongoDB client instance
         mongoClient = MongoClients.create("mongodb+srv://arjunraja:1TGctWNgmdWyekKS@northeastern.a0ay7eg.mongodb.net/?retryWrites=true&w=majority");
 
@@ -25,7 +26,13 @@ public class ConnectToDB {
         database = mongoClient.getDatabase(DATABASE_NAME);
         System.out.println("Connected to database: " + database.getName());
         System.out.println("Collections: " + database.listCollectionNames().into(new ArrayList<>()));
-        
+    }
+
+    public static ConnectToDB getInstance() {
+        if (instance == null) {
+            instance = new ConnectToDB();
+        }
+        return instance;
     }
 
     public MongoClient getClient() {
@@ -37,7 +44,7 @@ public class ConnectToDB {
     }
 
     public MongoCollection<Document> getCollection(String CollectionName) {
-    	collection = database.getCollection(CollectionName);
+        collection = database.getCollection(CollectionName);
         return collection;
     }
 
@@ -45,4 +52,3 @@ public class ConnectToDB {
         mongoClient.close();
     }
 }
-

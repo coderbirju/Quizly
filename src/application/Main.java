@@ -10,12 +10,12 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	
-	private ConnectToDB  mongoConnect;
+//	private ConnectToDB mongoConnect;
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-	
-	mongoConnect = new ConnectToDB();
-	
+		
+//	mongoConnect = ConnectToDB.getInstance();
 	Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLogin.fxml"));
 	Scene scene = new Scene(root, 600, 400);
 	primaryStage.setTitle("MyJavaFX");
@@ -32,7 +32,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         // Close the MongoManager instance
 		System.out.println("Close connection ");
-		mongoConnect.close();
+//		mongoConnect.close();
     }
 }
 
