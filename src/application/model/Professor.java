@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 
 import application.ConnectToDB;
 
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class Professor  {
@@ -23,10 +24,10 @@ public class Professor  {
 	}
 
 
-	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName) {
+	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName, long endMins) {
 		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR")
 			return "Not allowed";
-		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4,loggedInUser.getUserName(), QuizName);
+		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4,loggedInUser.getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
 	}
@@ -62,6 +63,7 @@ public class Professor  {
 					responses.add(response);
 				}
 			}
+			
 			Quiz quiz = new Quiz(
 					quizDocument.getString("question"),
 					quizDocument.getString("option1"),
@@ -71,14 +73,25 @@ public class Professor  {
 					quizDocument.getInteger("rating"),
 					quizDocument.getString("professor"),
 					quizDocument.getString("quizName"),
+					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
 					responses
 					);
 			return quiz;
 		} else
 			return null;
-		
-		
 	}
+	
+	
+	public List<String> getQuizAttendance(Quiz quiz) {
+		List<String> studentNames = new ArrayList<>();
+		List<Response> responses = quiz.getResponses();
+		for(Response response : responses) {
+			String name = response.getStudent();
+			studentNames.add(name);
+		}
+		return studentNames;
+	}
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package application.model;
 
 import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,39 +21,55 @@ public class Quiz {
 	private String Professor;
 	private String QuizName;
 	private String quizId;
+	private LocalDateTime endTime;
 	private List<Response> Responses;
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4, int rating,
-			String professor, String quizName, List<Response> responses) {
+			String professor, String quizName, LocalDateTime endTime, List<Response> responses) {
 		super();
-		Question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.rating = rating;
-		Professor = professor;
-		QuizName = quizName;
-		Responses = responses;
+		setQuestion(question);
+		setOption1(option1);
+		setOption2(option2);
+		setOption3(option3);
+		setOption4(option4);
+		setRating(rating);
+		setEndTime(endTime);
+		setProfessor(professor);
+		setQuizName(quizName);
+		setResponses(responses);
 	}
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4,
-			String professor, String quizName) {
+			String professor, long endMins, String quizName) {
 		super();
-		Question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.rating = 0;
-		Professor = professor;
-		QuizName = quizName;
-		Responses = new ArrayList<>();
+		setQuestion(question);
+		setOption1(option1);
+		setOption2(option2);
+		setOption3(option3);
+		setOption4(option4);
+		setRating(0);
+		setEndTime(endTime);
+		setProfessor(professor);
+		setQuizName(quizName);
+		setResponses(new ArrayList<>());
+	
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(900) + 100;
-		this.quizId = quizName.substring(0, 3) + randomNumber;
+		setQuizId(quizName.substring(0, 3) + randomNumber);
+		
+		LocalDateTime now = LocalDateTime.now();
+		setEndTime(now.plusMinutes(endMins));
+		
 	}
 	
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
+	}
+
 	public String getQuizId() {
 		return quizId;
 	}
@@ -77,6 +94,7 @@ public class Quiz {
 		        .append("rating", this.getRating())
 		        .append("professor", this.getProfessor())
 		        .append("quizName", this.getQuizName())
+		        .append("endTime", this.getEndTime())
 		        .append("responses", new ArrayList<Document>());
 			
 			collection.insertOne(quizDocument);
