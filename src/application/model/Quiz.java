@@ -2,6 +2,13 @@ package application.model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
+
+import org.bson.Document;
+
+import com.mongodb.client.MongoCollection;
+
+import application.ConnectToDB;
 
 public class Quiz {
 	private String Question;
@@ -12,8 +19,8 @@ public class Quiz {
 	private int rating;
 	private String Professor;
 	private String QuizName;
+	private String quizId;
 	private List<Response> Responses;
-	
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4, int rating,
 			String professor, String quizName, List<Response> responses) {
@@ -41,6 +48,43 @@ public class Quiz {
 		Professor = professor;
 		QuizName = quizName;
 		Responses = new ArrayList<>();
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(900) + 100;
+		this.quizId = quizName.substring(0, 3) + randomNumber;
+	}
+	
+	public String getQuizId() {
+		return quizId;
+	}
+	
+	public void setQuizId(String quizId) {
+		this.quizId = quizId;
+	}
+	
+	
+	public String saveQuiz() {
+		try {
+			ConnectToDB db = ConnectToDB.getInstance();
+			MongoCollection<Document> collection = db.getCollection("quiz");
+
+			Document quizDocument = new Document()
+				.append("quizId", this.getQuizId())
+		        .append("question", this.getQuestion())
+		        .append("option1", this.getOption1())
+		        .append("option2", this.getOption2())
+		        .append("option3", this.getOption3())
+		        .append("option4", this.getOption4())
+		        .append("rating", this.getRating())
+		        .append("professor", this.getProfessor())
+		        .append("quizName", this.getQuizName())
+		        .append("responses", new ArrayList<Document>());
+			
+			collection.insertOne(quizDocument);
+			
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return this.getQuizId();
 	}
 
 	public String getProfessor() {
@@ -106,7 +150,3 @@ public class Quiz {
 	
 	
 }
-
-//{
-//	"St": ["3", "8"]
-//}
