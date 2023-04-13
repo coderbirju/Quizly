@@ -2,13 +2,13 @@ package application.model;
 
 public class Response {
 	private int choice;
-	private String Student;
+	private String student;
 	private int rating;
 	
 	public Response(int choice, String student, int rating) {
 		super();
 		this.choice = choice;
-		Student = student;
+		this.student = student;
 		this.rating = rating;
 	}
 
@@ -21,11 +21,11 @@ public class Response {
 	}
 
 	public String getStudent() {
-		return Student;
+		return student;
 	}
 
 	public void setStudent(String student) {
-		Student = student;
+		this.student = student;
 	}
 
 	public int getRating() {
