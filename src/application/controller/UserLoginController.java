@@ -2,7 +2,9 @@ package application.controller;
 
 import java.io.IOException;
 
+
 import application.model.User;
+import application.model.Professor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,7 +53,7 @@ public class UserLoginController {
 		
 		else {
 			if(radioFaculty.isSelected()) {
-				role = "PROFFESSOR";
+				role = "PROFESSOR";
 			}
 			else {
 				role = "STUDENT";
@@ -61,6 +63,7 @@ public class UserLoginController {
 			
 			if(user != null) {
 				lblStatus.setText("Login Sucess!");
+//				Professor prof = new Professor();
 				Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 				Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
 				Scene scene = new Scene(root, 600, 400);

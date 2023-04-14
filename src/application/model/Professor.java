@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 
 import application.ConnectToDB;
 
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class Professor  {
@@ -19,14 +20,21 @@ public class Professor  {
 	public Professor() {
 		super();
 		this.loggedInUser = User.getLoggedInUser();
+		System.out.println("Inside professor -> this.loggedInUser = " + this.loggedInUser.getUserName());
 		fetchQuizIds();
+//		String ret1 = createQuiz("What is the capital of France?", "Paris", "Madrid", "Berlin", "London", "European Capitals Quiz", 30);
+//		System.out.println("ret1" + ret1);
+//		createQuiz("What is the tallest mammal?", "Giraffe", "Elephant", "Hippopotamus", "Rhino", "Animal Kingdom Quiz", 45);
+//		createQuiz("What is the boiling point of water?", "100 degrees Celsius", "50 degrees Celsius", "200 degrees Celsius", "0 degrees Celsius", "Chemistry Quiz", 60);
+
 	}
 
 
-	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName) {
+	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName, long endMins) {
+		System.out.println(" insife createQuiz loggedInUser -> " + loggedInUser + " loggedInUser.getRole() " + loggedInUser.getRole());
 		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR")
 			return "Not allowed";
-		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4,loggedInUser.getUserName(), QuizName);
+		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4,loggedInUser.getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
 	}
@@ -62,6 +70,7 @@ public class Professor  {
 					responses.add(response);
 				}
 			}
+			
 			Quiz quiz = new Quiz(
 					quizDocument.getString("question"),
 					quizDocument.getString("option1"),
@@ -71,14 +80,25 @@ public class Professor  {
 					quizDocument.getInteger("rating"),
 					quizDocument.getString("professor"),
 					quizDocument.getString("quizName"),
+					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
 					responses
 					);
 			return quiz;
 		} else
 			return null;
-		
-		
 	}
+	
+	
+	public List<String> getQuizAttendance(Quiz quiz) {
+		List<String> studentNames = new ArrayList<>();
+		List<Response> responses = quiz.getResponses();
+		for(Response response : responses) {
+			String name = response.getStudent();
+			studentNames.add(name);
+		}
+		return studentNames;
+	}
+	
 	
 	
 	
