@@ -97,6 +97,8 @@ public class Quiz {
 		        .append("endTime", this.getEndTime())
 		        .append("responses", new ArrayList<Document>());
 			
+			System.out.println("adding this quiz" + quizDocument.toString());
+			
 			collection.insertOne(quizDocument);
 			
 		} catch(Exception e) {
