@@ -19,7 +19,7 @@ public class HomePage_controller {
     void click(ActionEvent event) throws IOException {
     	Stage primaryStage = (Stage) btnStart.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
-		Scene scene = new Scene(root, 600, 400);
+		Scene scene = new Scene(root, 800, 435);
 		primaryStage.setTitle("Quizly");
 		primaryStage.setScene(scene);
 		primaryStage.show();
