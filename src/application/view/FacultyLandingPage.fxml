@@ -27,17 +27,17 @@
    <left>
       <AnchorPane fx:id="navBarSection" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #003366;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnCreateQuiz" layoutX="17.0" layoutY="171.0" mnemonicParsing="false" onAction="#createQuiz" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Create Quiz" textFill="#f8f5f5">
+            <Button fx:id="btnCreateQuiz" layoutX="16.0" layoutY="171.0" mnemonicParsing="false" onAction="#createQuiz" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Create Quiz" textFill="#f8f5f5">
                <graphic>
                   <FontAwesomeIcon fill="#fffdfd" glyphName="PLUS" />
                </graphic>
             </Button>
-            <Button fx:id="btnAnalytics" layoutX="16.0" layoutY="231.0" mnemonicParsing="false" onAction="#quizAnalytics" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Quiz Analytics" textFill="#fffefe">
+            <Button fx:id="btnAnalytics" layoutX="15.0" layoutY="231.0" mnemonicParsing="false" onAction="#quizAnalytics" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Quiz Analytics" textFill="#fffefe">
                <graphic>
                   <FontAwesomeIcon fill="#f8f6f6" glyphName="DASHBOARD" />
                </graphic>
             </Button>
-            <Button fx:id="btnAttendance" layoutX="17.0" layoutY="201.0" mnemonicParsing="false" onAction="#attendance" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Attendance" textFill="#fffefe">
+            <Button fx:id="btnAttendance" layoutX="15.0" layoutY="201.0" mnemonicParsing="false" onAction="#attendance" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Attendance" textFill="#fffefe">
                <graphic>
                   <FontAwesomeIcon fill="#f8f7f7" glyphName="LIST" />
                </graphic>
