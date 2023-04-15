@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyLandingPage_Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyLandingPage_Controller">
    <top>
       <AnchorPane prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #cfd1d4;" BorderPane.alignment="CENTER">
          <children>
@@ -15,12 +15,12 @@
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font></Label>
-            <Button layoutX="547.0" layoutY="6.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
+            <Button layoutX="747.0" layoutY="6.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
                <graphic>
                   <FontAwesomeIcon fx:id="btnLofout" glyphName="SIGN_OUT" onDragDetected="#signOut" size="1.8em" tabSize="25" text="" />
                </graphic>
             </Button>
-            <Label layoutX="491.0" layoutY="14.0" text="Sign Out" />
+            <Label layoutX="687.0" layoutY="14.0" text="Sign Out" />
          </children>
       </AnchorPane>
    </top>

@@ -66,7 +66,7 @@ public class UserLoginController {
 //				Professor prof = new Professor();
 				Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 				Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
-				Scene scene = new Scene(root, 600, 400);
+				Scene scene = new Scene(root, 800, 435);
 				primaryStage.setTitle("MyJavaFX");
 				primaryStage.setScene(scene);
 				primaryStage.show();
