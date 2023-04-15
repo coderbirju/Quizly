@@ -15,9 +15,9 @@
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font></Label>
-            <Button layoutX="747.0" layoutY="6.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
+            <Button fx:id="btnSignOut" layoutX="747.0" layoutY="6.0" mnemonicParsing="false" onAction="#signOut" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
                <graphic>
-                  <FontAwesomeIcon fx:id="btnLofout" glyphName="SIGN_OUT" onDragDetected="#signOut" size="1.8em" tabSize="25" text="" />
+                  <FontAwesomeIcon fx:id="btnLofout" glyphName="SIGN_OUT" size="1.8em" tabSize="25" text="" />
                </graphic>
             </Button>
             <Label layoutX="687.0" layoutY="14.0" text="Sign Out" />
