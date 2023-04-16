@@ -66,7 +66,7 @@ public class FacultyLandingPage_Controller {
     	Stage primaryStage = (Stage) btnCreateQuiz.getScene().getWindow();
     	User.signOut();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
-		Scene scene = new Scene(root, 800, 435);
+		Scene scene = new Scene(root);
 		primaryStage.setTitle("User Login");
 		primaryStage.setScene(scene);
 		primaryStage.show();

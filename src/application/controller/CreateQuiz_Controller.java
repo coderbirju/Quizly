@@ -74,7 +74,7 @@ public class CreateQuiz_Controller {
     	if (result.isPresent() && result.get() == ButtonType.OK) {
     	    // The user clicked the OK button
         	Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
-    		Scene scene = new Scene(root, 800, 435);
+    		Scene scene = new Scene(root);
     		primaryStage.setTitle("User Login");
     		primaryStage.setScene(scene);
     		primaryStage.show();
