@@ -25,6 +25,8 @@ public class User {
 		this.role = role;
 	}
 	
+	protected User() {}
+	
 	public static User getInstance(String username, String password, String role) {
         if (instance == null) {
         	ConnectToDB db = ConnectToDB.getInstance();

@@ -12,15 +12,13 @@ import application.ConnectToDB;
 import java.time.ZoneId;
 import java.util.ArrayList;
 
-public class Professor  {
+public class Professor extends User  {
 	
 	private List<String> quizIds;
-	private User loggedInUser;
 	
 	public Professor() {
 		super();
-		this.loggedInUser = User.getLoggedInUser();
-		System.out.println("Inside professor -> this.loggedInUser = " + this.loggedInUser.getUserName());
+		System.out.println("Inside professor -> this.loggedInUser = " + getUserName());
 		quizIds = new ArrayList<>();
 		fetchQuizIds();
 //		String ret1 = createQuiz("What is the capital of France?", "Paris", "Madrid", "Berlin", "London", "European Capitals Quiz", 30);
@@ -32,10 +30,10 @@ public class Professor  {
 
 
 	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName, long endMins) {
-		System.out.println(" insife createQuiz loggedInUser -> " + loggedInUser + " loggedInUser.getRole() " + loggedInUser.getRole());
-		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR")
+		System.out.println(" insife createQuiz loggedInUser -> " + " loggedInUser.getRole() " + getRole());
+		if(getLoggedInUser() == null || getRole() != "PROFESSOR")
 			return "Not allowed";
-		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4,loggedInUser.getUserName(), endMins, QuizName);
+		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
 	}
@@ -47,7 +45,7 @@ public class Professor  {
 	private void fetchQuizIds() {
 		ConnectToDB db = ConnectToDB.getInstance();
 		MongoCollection<Document> collection = db.getCollection("quiz");
-		Document query = new Document("professor", loggedInUser.getUserName());
+		Document query = new Document("professor", getUserName());
 		FindIterable<Document> iterable = collection.find(query);
 		
 		for(Document document : iterable) {
