@@ -64,16 +64,22 @@ public class UserLoginController {
 			
 			if(user != null) {
 				lblStatus.setText("Login Sucess!");
-//				Professor prof = new Professor();
-				Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
-				Parent root = FXMLLoader.load(getClass().getResource("/application/view/FacultyLandingPage.fxml"));
-				Scene scene = new Scene(root);
-				primaryStage.setTitle("User Login");
-				primaryStage.setScene(scene);
-				primaryStage.show();
-			} else {
-				lblStatus.setText("Incorrect Username or password!");
-			}
+//			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
+	            String fxmlFile;
+	            Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
+	            if ("PROFESSOR".equals(role)) {
+	                fxmlFile = "/application/view/FacultyLandingPage.fxml";
+	            } else {
+	                fxmlFile = "/application/view/StudentLanding.fxml";
+	            }
+	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+	            Scene scene = new Scene(root, 800, 435);
+	            primaryStage.setTitle("User Login");
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
+	        } else {
+	            lblStatus.setText("Incorrect Username or password!");
+	        }
 		}
 		
 	
