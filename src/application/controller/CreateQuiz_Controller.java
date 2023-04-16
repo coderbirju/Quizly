@@ -61,7 +61,6 @@ public class CreateQuiz_Controller {
     	String quizName = txtQuizName.getText();
     	
     	String quizId = prof.createQuiz(question, option1, option2, option3, option4, quizName, quizTime);
-    	System.out.println("Quiz created with id ----->" + quizId);
     	lblQuizCode.setText(quizId);
     	
     	Alert alert = new Alert(AlertType.INFORMATION);

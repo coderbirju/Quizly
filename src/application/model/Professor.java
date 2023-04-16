@@ -15,24 +15,22 @@ import java.util.ArrayList;
 public class Professor extends User  {
 	
 	private List<String> quizIds;
+	private User loggedInUser;
 	
 	public Professor() {
 		super();
 		System.out.println("Inside professor -> this.loggedInUser = " + getUserName());
 		quizIds = new ArrayList<>();
+		loggedInUser = User.getLoggedInUser();
 		fetchQuizIds();
-//		String ret1 = createQuiz("What is the capital of France?", "Paris", "Madrid", "Berlin", "London", "European Capitals Quiz", 30);
-//		System.out.println("ret1" + ret1);
-//		createQuiz("What is the tallest mammal?", "Giraffe", "Elephant", "Hippopotamus", "Rhino", "Animal Kingdom Quiz", 45);
-//		createQuiz("What is the boiling point of water?", "100 degrees Celsius", "50 degrees Celsius", "200 degrees Celsius", "0 degrees Celsius", "Chemistry Quiz", 60);
-
+		System.out.println("Previous quizIds ->>>>>>>" + quizIds);
 	}
 
 
 	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName, long endMins) {
-		System.out.println(" insife createQuiz loggedInUser -> " + " loggedInUser.getRole() " + getRole());
-		if(getLoggedInUser() == null || getRole() != "PROFESSOR")
+		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR") {
 			return "Not allowed";
+		}
 		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
@@ -45,7 +43,7 @@ public class Professor extends User  {
 	private void fetchQuizIds() {
 		ConnectToDB db = ConnectToDB.getInstance();
 		MongoCollection<Document> collection = db.getCollection("quiz");
-		Document query = new Document("professor", getUserName());
+		Document query = new Document("professor", loggedInUser.getUserName());
 		FindIterable<Document> iterable = collection.find(query);
 		
 		for(Document document : iterable) {
