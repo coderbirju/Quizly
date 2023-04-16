@@ -43,6 +43,15 @@ public class User {
         return instance;
     }
 	
+	public static void signOut() {
+		if(instance != null) {
+			instance = null;
+			System.out.println("Logged out successfully");
+		} else {
+			System.out.println("Logged out Already");
+		}
+	}
+	
 	public static User getLoggedInUser() {
 		if(instance != null)
 			return instance;

@@ -3,8 +3,9 @@ package application.controller;
 import java.io.IOException;
 
 
+
 import application.model.User;
-import application.model.Professor;
+//import application.model.Professor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
