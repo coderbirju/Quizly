@@ -21,6 +21,7 @@ public class Professor  {
 		super();
 		this.loggedInUser = User.getLoggedInUser();
 		System.out.println("Inside professor -> this.loggedInUser = " + this.loggedInUser.getUserName());
+		quizIds = new ArrayList<>();
 		fetchQuizIds();
 //		String ret1 = createQuiz("What is the capital of France?", "Paris", "Madrid", "Berlin", "London", "European Capitals Quiz", 30);
 //		System.out.println("ret1" + ret1);

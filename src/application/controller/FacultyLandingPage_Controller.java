@@ -1,6 +1,7 @@
 package application.controller;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import application.model.User;
 
 public class FacultyLandingPage_Controller {
 
@@ -62,6 +64,7 @@ public class FacultyLandingPage_Controller {
     @FXML
     void signOut(ActionEvent event) throws IOException {
     	Stage primaryStage = (Stage) btnCreateQuiz.getScene().getWindow();
+    	User.signOut();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
 		Scene scene = new Scene(root, 800, 435);
 		primaryStage.setTitle("User Login");
