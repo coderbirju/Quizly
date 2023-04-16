@@ -42,6 +42,17 @@ public class FacultyLandingPage_Controller {
     @FXML
     private AnchorPane viewArea;
     
+    @FXML
+    private Button btnHome;
+    
+    
+
+    
+    @FXML
+    void facultyHome(ActionEvent event) throws IOException {
+    	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/FacultyHome.fxml"));
+    	borderPane.setCenter(view);
+    }
 
     @FXML
     void attendance(ActionEvent event) throws IOException {
@@ -66,7 +77,7 @@ public class FacultyLandingPage_Controller {
     	Stage primaryStage = (Stage) btnCreateQuiz.getScene().getWindow();
     	User.signOut();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
-		Scene scene = new Scene(root, 800, 435);
+		Scene scene = new Scene(root);
 		primaryStage.setTitle("User Login");
 		primaryStage.setScene(scene);
 		primaryStage.show();

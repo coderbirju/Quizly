@@ -7,21 +7,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="800.0" style="-fx-background-color: #003366;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.HomePage_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="950.0" style="-fx-background-color: #003366;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.HomePage_controller">
    <children>
-      <Text fill="#ff9966" layoutX="137.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Quizly " wrappingWidth="440.67431640625">
+      <Text fill="#ff9966" layoutX="125.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Quizly " wrappingWidth="686.2267837524414">
          <font>
-            <Font name="Arial Bold Italic" size="48.0" />
+            <Font name="Arial Bold Italic" size="64.0" />
          </font>
       </Text>
-      <ImageView fitHeight="77.0" fitWidth="95.0" layoutX="592.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="113.0" fitWidth="116.0" layoutX="707.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/quizly-question%20mark.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnStart" layoutX="357.0" layoutY="277.0" mnemonicParsing="false" onAction="#click" prefHeight="26.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" text="Start">
+      <Button fx:id="btnStart" layoutX="381.0" layoutY="432.0" mnemonicParsing="false" onAction="#click" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10px;" text="Start">
          <font>
-            <Font name="Arial Bold" size="14.0" />
+            <Font name="Arial Bold" size="36.0" />
          </font>
       </Button>
    </children>
