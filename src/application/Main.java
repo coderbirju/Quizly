@@ -17,7 +17,7 @@ public class Main extends Application {
 		
 //	mongoConnect = ConnectToDB.getInstance();
 	Parent root = FXMLLoader.load(getClass().getResource("/application/view/HomePage.fxml"));
-	Scene scene = new Scene(root, 800, 435);
+	Scene scene = new Scene(root);
 	primaryStage.setTitle("MyJavaFX");
 	primaryStage.setScene(scene);
 	primaryStage.show();
