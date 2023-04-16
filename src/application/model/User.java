@@ -6,10 +6,6 @@ import com.mongodb.client.MongoCollection;
 
 import application.ConnectToDB;
 
-//enum Roles {
-//	PROFFESSOR,
-//	STUDENT
-//}
 
 public class User {
 	
@@ -34,7 +30,7 @@ public class User {
     		MongoCollection<Document> collection = db.getCollection("users");
     		
     		System.out.println("collection.countDocuments -> " + collection.countDocuments());
-    		Document query = new Document("username", username);
+    		Document query = new Document("username", username).append("password", password);;
     		Document user = collection.find(query).first();
     		if(user != null) {    			
     			instance = new User(username, password, role);
