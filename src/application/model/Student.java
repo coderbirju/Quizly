@@ -22,8 +22,8 @@ public class Student extends User {
 		loggedInUser = User.getLoggedInUser();
 		System.out.println("loggedInUser " + loggedInUser.getUserName());
 		// to be del
-		Quiz dummyQuiz = getQuiz("new713");
-		ApiResponse resp = submitQuiz(4, 4);
+		Quiz dummyQuiz = getQuiz("Hel458");
+		ApiResponse resp = submitQuiz("4", "4");
 		System.out.println(resp.getStatus() + " " + resp.getReason());
 		
 	}
@@ -58,7 +58,7 @@ public class Student extends User {
 			return null;
 	}
 	
-	public ApiResponse submitQuiz(int optionSelected, int rating) {
+	public ApiResponse submitQuiz(String optionSelected, String rating) {
 		MongoCollection<Document> collection = db.getCollection("quiz");
 		Document query = new Document("quizId", currentQuizId);
 		Document quizDocument = collection.find(query).first();
@@ -67,7 +67,7 @@ public class Student extends User {
 			List<Document> responseDocuments = quizDocument.getList("responses", Document.class);
 			if(responseDocuments != null && responseDocuments.size() > 0) {
 				for (Document responseDocument : responseDocuments) {
-					Response response = new Response(quizDocument.getInteger("choice"),responseDocument.getString("Student"), quizDocument.getInteger("rating"));
+					Response response = new Response(responseDocument.getString("choice"),responseDocument.getString("Student"), responseDocument.getString("rating"));
 					if(response.getStudent() == getUserName()) {
 						apiResponse.setReason("User has already attempted quiz");
 						return apiResponse;
