@@ -3,8 +3,9 @@ package application.controller;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import application.model.Professor;
 import application.model.Quiz;
-import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,16 +36,26 @@ public class FacultyHome_Controller {
  // Create ObservableList of Quiz objects
  // Populate ObservableList with quiz data retrieved from MongoDB
   
-//ObservableList<Quiz> quizList = FXCollections.observableArrayList();
 
+	Professor prof = new Professor();
+	
+    ObservableList<Quiz> quizList = prof.getQuizzes();
+	
+ 
     
     public void initialize() throws IOException {
     	
-    	colId.setCellValueFactory(new PropertyValueFactory<Quiz,String>("quizId"));
-    	colId.setCellValueFactory(new PropertyValueFactory<Quiz,String>("QuizName"));
-    	//tblQuiz.setItems(quizList);
+    	
+        System.out.println(quizList.toString());
+        
+        colId.setCellValueFactory(new PropertyValueFactory<Quiz,String>("quizId"));
+    	colName.setCellValueFactory(new PropertyValueFactory<Quiz,String>("QuizName"));
+    	colDate.setCellValueFactory(new PropertyValueFactory<Quiz,LocalDateTime>("endTime"));
+    	tblQuiz.setItems(quizList);
+    	
     	
     }
 
     
 }
+
