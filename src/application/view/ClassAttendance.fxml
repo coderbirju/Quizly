@@ -31,5 +31,10 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="btnDownload" layoutX="340.0" layoutY="356.0" mnemonicParsing="false" onAction="#download" text="Download">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
