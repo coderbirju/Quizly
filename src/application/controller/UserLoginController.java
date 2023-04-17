@@ -70,7 +70,7 @@ public class UserLoginController {
 	            if ("PROFESSOR".equals(role)) {
 	                fxmlFile = "/application/view/FacultyLandingPage.fxml";
 	            } else {
-	                fxmlFile = "/application/view/StudentLanding.fxml";
+	                fxmlFile = "/application/view/LandingStudentPage.fxml";
 	            }
 	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
 	            Scene scene = new Scene(root, 800, 435);
