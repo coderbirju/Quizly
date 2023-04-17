@@ -70,7 +70,7 @@ public class UserLoginController {
 	            if (role.equals("PROFESSOR") && user.getRole().equals("PROFESSOR")) {
 	                fxmlFile = "/application/view/FacultyLandingPage.fxml";
 	            } else if (role.equals("STUDENT") && user.getRole().equals("STUDENT")){
-	                fxmlFile = "/application/view/StudentLanding.fxml";
+	                fxmlFile = "/application/view/LandingStudentPage.fxml";
 	            } else {
 	            	 lblStatus.setText("Incorrect role!");
 	            	 fxmlFile = "";

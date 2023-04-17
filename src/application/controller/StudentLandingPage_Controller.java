@@ -1,12 +1,17 @@
 
 package application.controller;
 
+import application.model.User;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class StudentLandingPage_Controller {
 
@@ -30,7 +35,7 @@ public class StudentLandingPage_Controller {
 
     @FXML
     void attendance(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -40,7 +45,7 @@ public class StudentLandingPage_Controller {
 
     @FXML
     void signOut(ActionEvent event) {
-
+    
     }
 
 }
