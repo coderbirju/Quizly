@@ -1,7 +1,7 @@
 package application.controller;
 
 import java.io.IOException;
-
+import javafx.scene.control.ToggleGroup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,75 +10,66 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class QuizPageFinal_Controller {
 	
-	@FXML
-	private ToggleGroup toggleGroup;
-
+	
     @FXML
     private Button btnSubmit;
     
     @FXML
-    private Label errorMessage; 
-    
+    private Label errorMessage;
+      
     @FXML
     private AnchorPane viewArea;
 
     @FXML
-    private RadioButton btnradio;
+    private RadioButton rboption1;
+    
+    @FXML
+    private RadioButton rboption2;
+    
+    @FXML
+    private RadioButton rboption3;
+    
+    @FXML
+    private RadioButton rboption4;
 
     @FXML
     private TextField txtField;
     
-    @FXML
-    private RadioButton btnradio1;
-
-    @FXML
-    private RadioButton btnradio2;
-
-    @FXML
-    private RadioButton btnradio3;
-
-    @FXML
-    private RadioButton btnradio4;
     
     @FXML
-    private BorderPane borderPane;
+    private BorderPane borderPane; 
+    
+    private ToggleGroup toggleGroup;
 
-    @FXML
-    void option1(ActionEvent event) {
-
+    public void initialize() {
+        // Create a new instance of ToggleGroup and assign it to the radio buttons
+        toggleGroup = new ToggleGroup();
+        rboption1.setToggleGroup(toggleGroup);
+        rboption2.setToggleGroup(toggleGroup);
+        rboption3.setToggleGroup(toggleGroup);
+        rboption4.setToggleGroup(toggleGroup);
     }
 
-    @FXML
-    void option2(ActionEvent event) {
 
-    }
-
-    @FXML
-    void option3(ActionEvent event) {
-
-    }
-
-    @FXML
-    void option4(ActionEvent event) {
-
-    }
 
     @FXML
     void submit(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/FinalPage.fxml"));
-        AnchorPane finalPage = loader.load();
+    	if (toggleGroup.getSelectedToggle() != null && !txtField.getText().isEmpty()) {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/FinalPage.fxml"));
+            AnchorPane finalPage = loader.load();
 
-        // Get the parent AnchorPane
-        AnchorPane parentAnchorPane = (AnchorPane) btnSubmit.getParent();
+            AnchorPane parentAnchorPane = (AnchorPane) btnSubmit.getParent();
 
-        // Set the AnotherPage.fxml as the content of the parent AnchorPane
-        parentAnchorPane.getChildren().setAll(finalPage);
+            parentAnchorPane.getChildren().setAll(finalPage);
+        } else {
+            errorMessage.setText("Please select an option and enter a value.");
+        }
 
     }
 

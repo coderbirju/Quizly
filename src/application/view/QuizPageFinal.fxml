@@ -4,15 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.QuizPageFinal_Controller">
    <children>
-      <RadioButton fx:id="btnradio" layoutX="78.0" layoutY="107.0" mnemonicParsing="false" onAction="#option1" prefHeight="18.0" prefWidth="139.0" text="Option a" />
-      <RadioButton fx:id="btnradio" layoutX="78.0" layoutY="136.0" mnemonicParsing="false" onAction="#option2" prefHeight="18.0" prefWidth="139.0" text="Option b" />
-      <RadioButton fx:id="btnradio" layoutX="77.0" layoutY="161.0" mnemonicParsing="false" onAction="#option3" prefHeight="18.0" prefWidth="116.0" text="Option c" />
-      <RadioButton fx:id="btnradio" layoutX="76.0" layoutY="191.0" mnemonicParsing="false" onAction="#option4" text="Option d" />
+      <RadioButton fx:id="rboption1" layoutX="78.0" layoutY="107.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="139.0" text="Option a">
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="rboption2" layoutX="78.0" layoutY="136.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="139.0" text="Option b" toggleGroup="$toggleGroup" />
+      <RadioButton fx:id="rboption3" layoutX="77.0" layoutY="161.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="116.0" text="Option c" toggleGroup="$toggleGroup" />
+      <RadioButton fx:id="rboption4" layoutX="76.0" layoutY="191.0" mnemonicParsing="false" text="Option d" toggleGroup="$toggleGroup" />
       <Label layoutX="74.0" layoutY="79.0" prefHeight="17.0" prefWidth="122.0" text="Display Question" />
       <Text layoutX="78.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
       <Text layoutX="75.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Survey" />
