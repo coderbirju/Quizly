@@ -62,6 +62,21 @@ public class Quiz {
 		
 	}
 	
+	protected Quiz(String quizId, String quizName, LocalDateTime endTime) {
+		setQuizId(quizId);
+		setQuizName(quizName);
+		setEndTime(endTime);
+		setQuestion("");
+		setOption1("");
+		setOption2("");
+		setOption3("");
+		setOption4("");
+		setRating(0);
+		setProfessor("");
+		setResponses(new ArrayList<>());
+	}
+	
+	
 	public LocalDateTime getEndTime() {
 		return endTime;
 	}

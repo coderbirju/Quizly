@@ -67,13 +67,17 @@ public class UserLoginController {
 //			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 	            String fxmlFile;
 	            Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
-	            if ("PROFESSOR".equals(role)) {
+	            if (role.equals("PROFESSOR") && user.getRole().equals("PROFESSOR")) {
 	                fxmlFile = "/application/view/FacultyLandingPage.fxml";
-	            } else {
+	            } else if (role.equals("STUDENT") && user.getRole().equals("STUDENT")){
 	                fxmlFile = "/application/view/StudentLanding.fxml";
+	            } else {
+	            	 lblStatus.setText("Incorrect role!");
+	            	 fxmlFile = "";
+	            	 return;
 	            }
 	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
-	            Scene scene = new Scene(root, 800, 435);
+	            Scene scene = new Scene(root);
 	            primaryStage.setTitle("User Login");
 	            primaryStage.setScene(scene);
 	            primaryStage.show();

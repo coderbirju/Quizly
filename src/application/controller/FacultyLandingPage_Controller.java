@@ -45,7 +45,10 @@ public class FacultyLandingPage_Controller {
     @FXML
     private Button btnHome;
     
-    
+    public void initialize() throws IOException {
+    	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/FacultyHome.fxml"));
+    	borderPane.setCenter(view);
+    }
 
     
     @FXML
