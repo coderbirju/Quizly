@@ -29,8 +29,8 @@ public class User {
     		
     		MongoCollection<Document> collection = db.getCollection("users");
     		
-    		System.out.println("collection.countDocuments -> " + collection.countDocuments());
-    		Document query = new Document("username", username).append("password", password);;
+    		System.out.println("cString username, String password, String role " + username + password + role);
+    		Document query = new Document("username", username).append("password", password).append("role", role);
     		Document user = collection.find(query).first();
     		if(user != null) {    			
     			instance = new User(username, password, role);

@@ -8,22 +8,23 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
 import application.ConnectToDB;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class Professor extends User  {
 	
-	private List<String> quizIds;
+	private ObservableList<Quiz> quizzes;
 	private User loggedInUser;
 	
 	public Professor() {
 		super();
 		System.out.println("Inside professor -> this.loggedInUser = " + getUserName());
-		quizIds = new ArrayList<>();
+		quizzes = FXCollections.observableArrayList();
 		loggedInUser = User.getLoggedInUser();
-		fetchQuizIds();
-		System.out.println("Previous quizIds ->>>>>>>" + quizIds);
+		fetchQuizzes();
 	}
 
 
@@ -36,21 +37,10 @@ public class Professor extends User  {
 		return uniqueId;
 	}
 	
-	public List<String> getQuizIds() {
-		return this.quizIds;
+	public ObservableList<Quiz> getQuizzes() {
+		return this.quizzes;
 	}
 	
-	private void fetchQuizIds() {
-		ConnectToDB db = ConnectToDB.getInstance();
-		MongoCollection<Document> collection = db.getCollection("quiz");
-		Document query = new Document("professor", loggedInUser.getUserName());
-		FindIterable<Document> iterable = collection.find(query);
-		
-		for(Document document : iterable) {
-			String quizId = document.getString("quizId");
-			this.quizIds.add(quizId);
-		}
-	}
 	
 	public Quiz fetchQuizById(String quizId) {
 		ConnectToDB db = ConnectToDB.getInstance();
@@ -97,7 +87,20 @@ public class Professor extends User  {
 	}
 	
 	
-	
+	public void fetchQuizzes() {
+		ConnectToDB db = ConnectToDB.getInstance();
+		MongoCollection<Document> collection = db.getCollection("quiz");
+		Document query = new Document("professor", loggedInUser.getUserName());
+		FindIterable<Document> iterable = collection.find(query);
+		
+		
+		for(Document document : iterable) {
+			if(document != null) {
+				Quiz leanQuiz = new Quiz(document.getString("quizName"), document.getString("quizId"), document.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+				this.quizzes.add(leanQuiz);
+			}
+		}
+	}
 	
 	
 }

@@ -9,7 +9,7 @@ module Quizly {
 	requires fontawesomefx;
 	
 	opens application.controller to javafx.graphics, javafx.fxml;
-//	opens application.model to org.mongodb.driver.sync.client, com.mongodb.client.MongoClients, com.mongodb.client.MongoDatabase; 
+	opens application.model to javafx.graphics, javafx.fxml,javafx.base; 
     opens application.view to javafx.graphics, javafx.fxml;
     opens application to javafx.graphics, javafx.fxml;
 }
