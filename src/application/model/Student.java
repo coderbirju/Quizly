@@ -22,7 +22,7 @@ public class Student extends User {
 		loggedInUser = User.getLoggedInUser();
 		System.out.println("loggedInUser " + loggedInUser.getUserName());
 		// to be del
-		Quiz dummyQuiz = getQuiz("Hel458");
+		Quiz dummyQuiz = getQuiz("Soe994");
 		ApiResponse resp = submitQuiz("4", "4");
 		System.out.println(resp.getStatus() + " " + resp.getReason());
 		
@@ -86,6 +86,7 @@ public class Student extends User {
 			apiResponse.setReason("Response added");
 			
 		}
+		System.out.println("Api response" + apiResponse.toString());
 		return apiResponse;
 	}
 

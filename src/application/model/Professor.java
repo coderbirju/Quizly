@@ -53,7 +53,7 @@ public class Professor extends User  {
 			List<Response> responses = new ArrayList<>();
 			if(responseDocuments != null && responseDocuments.size() > 0) {
 				for (Document responseDocument : responseDocuments) {
-					Response response = new Response(quizDocument.getInteger("choice"),responseDocument.getString("Student"), quizDocument.getInteger("rating"));
+					Response response = new Response(responseDocument.getString("choice"),responseDocument.getString("Student"), responseDocument.getString("rating"));
 					responses.add(response);
 				}
 			}
