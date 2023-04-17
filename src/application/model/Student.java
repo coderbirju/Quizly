@@ -15,9 +15,17 @@ public class Student extends User {
 	
 	private ConnectToDB db;
 	private String currentQuizId;
+	private User loggedInUser;
 	
 	public Student() {
 		db = ConnectToDB.getInstance();
+		loggedInUser = User.getLoggedInUser();
+		System.out.println("loggedInUser " + loggedInUser.getUserName());
+		// to be del
+		Quiz dummyQuiz = getQuiz("Soe994");
+		ApiResponse resp = submitQuiz("4", "4");
+		System.out.println(resp.getStatus() + " " + resp.getReason());
+		
 	}
 	
 	public Quiz getQuiz(String quizId) {
@@ -50,7 +58,7 @@ public class Student extends User {
 			return null;
 	}
 	
-	public ApiResponse submitQuiz(int optionSelected, int rating) {
+	public ApiResponse submitQuiz(String optionSelected, String rating) {
 		MongoCollection<Document> collection = db.getCollection("quiz");
 		Document query = new Document("quizId", currentQuizId);
 		Document quizDocument = collection.find(query).first();
@@ -59,24 +67,26 @@ public class Student extends User {
 			List<Document> responseDocuments = quizDocument.getList("responses", Document.class);
 			if(responseDocuments != null && responseDocuments.size() > 0) {
 				for (Document responseDocument : responseDocuments) {
-					Response response = new Response(quizDocument.getInteger("choice"),responseDocument.getString("Student"), quizDocument.getInteger("rating"));
+					Response response = new Response(responseDocument.getString("choice"),responseDocument.getString("Student"), responseDocument.getString("rating"));
 					if(response.getStudent() == getUserName()) {
 						apiResponse.setReason("User has already attempted quiz");
 						return apiResponse;
 					}
 				}
-				Response newResponse = new Response(optionSelected, getUserName(), rating);
-				Document responseDocument = new Document()
-	                    .append("choice", newResponse.getChoice())
-	                    .append("Student", newResponse.getStudent())
-	                    .append("rating", newResponse.getRating());
-				responseDocuments.add(responseDocument);
-				quizDocument.put("responses", responseDocuments);
-				collection.replaceOne(query, quizDocument);
-				apiResponse.setStatus("Success");
-				apiResponse.setReason("Response added");
 			}
+			Response newResponse = new Response(optionSelected, loggedInUser.getUserName(), rating);
+			Document responseDocument = new Document()
+                    .append("choice", newResponse.getChoice())
+                    .append("Student", newResponse.getStudent())
+                    .append("rating", newResponse.getRating());
+			responseDocuments.add(responseDocument);
+			quizDocument.put("responses", responseDocuments);
+			collection.replaceOne(query, quizDocument);
+			apiResponse.setStatus("Success");
+			apiResponse.setReason("Response added");
+			
 		}
+		System.out.println("Api response" + apiResponse.toString());
 		return apiResponse;
 	}
 

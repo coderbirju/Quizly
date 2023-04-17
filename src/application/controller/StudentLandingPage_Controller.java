@@ -2,6 +2,9 @@
 package application.controller;
 
 import application.model.User;
+import java.io.IOException;
+import application.model.Student;
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,5 +50,14 @@ public class StudentLandingPage_Controller {
     void signOut(ActionEvent event) {
     
     }
+    
+    
+    public void initialize() throws IOException {
+    	System.out.println("Inside initialize");
+    	Student student = new Student();
+//    	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/StudentLanding.fxml"));
+//    	borderPane.setCenter(view);
+    }
+
 
 }
