@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClassAttendance_Controller {
 
@@ -48,9 +49,12 @@ public class ClassAttendance_Controller {
     	System.out.println("quiz ID from user is"+quizId);
     	 Professor prof = new Professor();
     	 Quiz quiz = prof.fetchQuizById(quizId);
-//   	 System.out.println("quiz of that quizid"+quiz.toString());
-//    	System.out.println(prof.getQuizAttendance(quiz).toString());
-//    	txtResult.setText(prof.getQuizAttendance(quiz).toString());
+    	 List<String> studentList = prof.getQuizAttendance(quiz);
+    	 for (String s : studentList) {
+    		 txtResult.appendText(s + "\n");
+    		}
+   
+  // txtResult.setText(prof.getQuizAttendance(quiz).toString());
     }
     
     @FXML
