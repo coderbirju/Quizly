@@ -15,9 +15,17 @@ public class Student extends User {
 	
 	private ConnectToDB db;
 	private String currentQuizId;
+	private User loggedInUser;
 	
 	public Student() {
 		db = ConnectToDB.getInstance();
+		loggedInUser = User.getLoggedInUser();
+		System.out.println("loggedInUser " + loggedInUser.getUserName());
+		// to be del
+		Quiz dummyQuiz = getQuiz("new713");
+		ApiResponse resp = submitQuiz(4, 4);
+		System.out.println(resp.getStatus() + " " + resp.getReason());
+		
 	}
 	
 	public Quiz getQuiz(String quizId) {
@@ -65,17 +73,18 @@ public class Student extends User {
 						return apiResponse;
 					}
 				}
-				Response newResponse = new Response(optionSelected, getUserName(), rating);
-				Document responseDocument = new Document()
-	                    .append("choice", newResponse.getChoice())
-	                    .append("Student", newResponse.getStudent())
-	                    .append("rating", newResponse.getRating());
-				responseDocuments.add(responseDocument);
-				quizDocument.put("responses", responseDocuments);
-				collection.replaceOne(query, quizDocument);
-				apiResponse.setStatus("Success");
-				apiResponse.setReason("Response added");
 			}
+			Response newResponse = new Response(optionSelected, loggedInUser.getUserName(), rating);
+			Document responseDocument = new Document()
+                    .append("choice", newResponse.getChoice())
+                    .append("Student", newResponse.getStudent())
+                    .append("rating", newResponse.getRating());
+			responseDocuments.add(responseDocument);
+			quizDocument.put("responses", responseDocuments);
+			collection.replaceOne(query, quizDocument);
+			apiResponse.setStatus("Success");
+			apiResponse.setReason("Response added");
+			
 		}
 		return apiResponse;
 	}
