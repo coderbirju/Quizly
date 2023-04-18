@@ -14,6 +14,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="submit" layoutX="212.0" layoutY="239.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Submit" textFill="#f8f5f5" />
+      <Button fx:id="submit" layoutX="225.0" layoutY="254.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Submit" textFill="#f8f5f5" />
+      <Label fx:id="errorMessage" layoutX="217.0" layoutY="223.0" />
    </children>
 </AnchorPane>

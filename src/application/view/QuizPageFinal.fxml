@@ -15,9 +15,10 @@
       <RadioButton fx:id="btnradio" layoutX="76.0" layoutY="191.0" mnemonicParsing="false" onAction="#option4" text="Option d" />
       <Label layoutX="74.0" layoutY="79.0" prefHeight="17.0" prefWidth="122.0" text="Display Question" />
       <Text layoutX="78.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
-      <Text layoutX="75.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Survey" />
-      <Label layoutX="75.0" layoutY="268.0" text="How did you like the class?" />
-      <TextField layoutX="68.0" layoutY="293.0" promptText="rating" />
-      <Button layoutX="84.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: #003366;" text="Submit" textFill="WHITE" />
+      <Text layoutX="75.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Survey" />
+      <Label layoutX="73.0" layoutY="267.0" text="How did you like the class?" />
+      <TextField fx:id="txtField" layoutX="68.0" layoutY="291.0" onAction="#txtRating" promptText="rating" />
+      <Button fx:id="btnSubmit" layoutX="83.0" layoutY="348.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #003366;" text="Submit" textFill="WHITE" />
+      <Label fx:id="errorMessage" layoutX="79.0" layoutY="324.0" />
    </children>
 </AnchorPane>
