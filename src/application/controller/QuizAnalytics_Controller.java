@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.controlsfx.control.Rating;
+
+import application.model.Professor;
+import application.model.Quiz;
+import application.model.QuizAnalytics;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,14 +57,22 @@ public class QuizAnalytics_Controller {
 
     }
 
-    List<Integer> barchartData = new ArrayList<>();
+    //List<Integer> barchartData = new ArrayList<>();
+	
+	 
+	 
     
     @FXML
     void quizAlanytics(ActionEvent event) throws IOException {
-    	int counter1 = 1;
-    	int counter2 = 2;
-    	int counter3 = 3;
-    	int counter4 = 4;
+    	 Professor prof = new Professor();
+    	String quizId = txtQuizCode2.getText();
+    	QuizAnalytics analytics = prof.getQuizAnalytics(quizId);
+    	int counter1 = analytics.getOption1();
+    	System.out.println("option 1 counter");
+    	int counter2 =  analytics.getOption2();
+    	int counter3 = analytics.getOption3();
+    	int counter4 =  analytics.getOption4();
+    	System.out.println("option 1 counter"+counter4);
     	Stage newWindow = new Stage();
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/BarChart.fxml"));
     	Parent root = loader.load();
@@ -91,7 +103,9 @@ public class QuizAnalytics_Controller {
 
     @FXML
     void searchQuiz2(ActionEvent event) {
-String quizId = txtQuizCode2.getText();
+    	String quizId = txtQuizCode2.getText();
+    	 Professor prof = new Professor();
+    	Quiz quiz = prof.fetchQuizById(quizId);
     	
     	if(quizId.isEmpty()) {
     		 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -101,11 +115,18 @@ String quizId = txtQuizCode2.getText();
     	        return;
     	}
 
-    	// Professor prof = new Professor();
-    	 //barchartData = prof.getdata
-    	
-    	double rating = 3.4;
+    
+    	QuizAnalytics analytics = prof.getQuizAnalytics(quizId);
+    	double rating = analytics.getAvgRating();
     	classRatings.setRating(rating);
+    	System.out.println("rating counter"+rating);
+    	lblOption1.setText(quiz.getOption1());
+      	lblOption2.setText(quiz.getOption2());
+      	lblOption3.setText(quiz.getOption3());
+      	lblOption4.setText(quiz.getOption4());
+      	
+      	
+    	
     }
 
 }
