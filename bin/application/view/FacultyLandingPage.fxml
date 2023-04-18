@@ -9,18 +9,18 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyLandingPage_Controller">
    <top>
-      <AnchorPane prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: #cfd1d4;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="54.0" prefWidth="950.0" style="-fx-background-color: #cfd1d4;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="58.0" layoutY="11.0" prefHeight="17.0" prefWidth="168.0" text="Faculty Dashboard">
+            <Label layoutX="40.0" layoutY="17.0" prefHeight="17.0" prefWidth="168.0" text="Faculty Dashboard">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
-            <Button fx:id="btnSignOut" layoutX="885.0" layoutY="5.0" mnemonicParsing="false" onAction="#signOut" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
+            <Button fx:id="btnSignOut" layoutX="885.0" layoutY="11.0" mnemonicParsing="false" onAction="#signOut" prefHeight="33.0" prefWidth="29.0" style="-fx-background-radius: 8px; -fx-cursor: hand;">
                <graphic>
                   <FontAwesomeIcon fx:id="btnLofout" glyphName="SIGN_OUT" size="1.8em" tabSize="25" text="" />
                </graphic>
             </Button>
-            <Label layoutX="804.0" layoutY="11.0" text="Sign Out">
+            <Label layoutX="799.0" layoutY="17.0" text="Sign Out">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
@@ -54,8 +54,8 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="83.0" layoutY="113.0" size="8em" tabSize="35" />
-            <Label layoutX="85.0" layoutY="139.0" prefHeight="27.0" prefWidth="79.0" text="Faculty" textFill="#fcfcfc">
+            <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="83.0" layoutY="133.0" size="8em" tabSize="35" />
+            <Label layoutX="83.0" layoutY="159.0" prefHeight="27.0" prefWidth="79.0" text="Faculty" textFill="#fcfcfc">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
