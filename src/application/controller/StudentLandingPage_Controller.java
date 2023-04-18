@@ -54,7 +54,7 @@ public class StudentLandingPage_Controller {
     
     public void initialize() throws IOException {
     	System.out.println("Inside initialize");
-    	Student student = new Student();
+    	
 //    	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/StudentLanding.fxml"));
 //    	borderPane.setCenter(view);
     }

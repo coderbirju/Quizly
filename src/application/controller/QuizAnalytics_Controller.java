@@ -68,11 +68,9 @@ public class QuizAnalytics_Controller {
     	String quizId = txtQuizCode2.getText();
     	QuizAnalytics analytics = prof.getQuizAnalytics(quizId);
     	int counter1 = analytics.getOption1();
-    	System.out.println("option 1 counter");
     	int counter2 =  analytics.getOption2();
     	int counter3 = analytics.getOption3();
     	int counter4 =  analytics.getOption4();
-    	System.out.println("option 1 counter"+counter4);
     	Stage newWindow = new Stage();
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/BarChart.fxml"));
     	Parent root = loader.load();
@@ -82,17 +80,6 @@ public class QuizAnalytics_Controller {
     	newWindow.setScene(newScene);
     	newWindow.show();
 
-
-//    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/BarChart.fxml"));
-//         Parent root = loader.load();
-//         BarChart_Controller scene2Controller = loader.getController();
-//         // scene2Controller.setData(barchartData);
-//         scene2Controller.setData(counter1, counter2, counter3, counter4);
-//         Stage stage = new Stage();
-//         Scene scene = new Scene(root);
-//          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//         stage.setScene(scene);
-//         stage.show();
     }
 
     @FXML

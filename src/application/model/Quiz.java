@@ -24,8 +24,9 @@ public class Quiz {
 	private LocalDateTime endTime;
 	private List<Response> Responses;
 	
-	public Quiz(String question, String option1, String option2, String option3, String option4, int rating,
+	public Quiz(String quizId, String question, String option1, String option2, String option3, String option4, int rating,
 			String professor, String quizName, LocalDateTime endTime, List<Response> responses) {
+		setQuizId(quizId);
 		setQuestion(question);
 		setOption1(option1);
 		setOption2(option2);

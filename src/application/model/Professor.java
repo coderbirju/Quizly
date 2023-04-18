@@ -32,7 +32,7 @@ public class Professor extends User  {
 		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR") {
 			return "Not allowed";
 		}
-		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, getUserName(), endMins, QuizName);
+		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, loggedInUser.getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
 	}
@@ -59,6 +59,7 @@ public class Professor extends User  {
 			}
 			
 			Quiz quiz = new Quiz(
+					quizDocument.getString("quizId"),
 					quizDocument.getString("question"),
 					quizDocument.getString("option1"),
 					quizDocument.getString("option2"),
@@ -96,7 +97,7 @@ public class Professor extends User  {
 		
 		for(Document document : iterable) {
 			if(document != null) {
-				Quiz leanQuiz = new Quiz(document.getString("quizName"), document.getString("quizId"), document.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+				Quiz leanQuiz = new Quiz(document.getString("quizId"), document.getString("quizName"), document.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 				this.quizzes.add(leanQuiz);
 			}
 		}
@@ -106,13 +107,15 @@ public class Professor extends User  {
 	public QuizAnalytics getQuizAnalytics(String quizId) {
 		QuizAnalytics analytics = new QuizAnalytics();
 		Quiz takenQuiz = null;
-		for(Quiz quiz : quizzes) {
+		
+		for(Quiz quiz : this.quizzes) {
 			if(quiz.getQuizId().equals(quizId)) {
-				takenQuiz = quiz;
+				takenQuiz = fetchQuizById(quizId);
 			}
 		}
 		
 		if(takenQuiz != null) {
+			
 			long avgRating = 0;
 			long totalRating = 0;
 			List<Response> responses = takenQuiz.getResponses();
