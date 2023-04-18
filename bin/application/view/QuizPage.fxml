@@ -2,18 +2,38 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane fx:id="viewArea" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.QuizPage_Controller">
    <children>
-      <TextField fx:id="Code" layoutX="268.0" layoutY="183.0" promptText="Code" />
-      <Label layoutX="99.0" layoutY="185.0" text="Enter the code">
+      <TextField fx:id="txtQuizCode" layoutX="253.0" layoutY="29.0" promptText="Code" />
+      <Label layoutX="86.0" layoutY="31.0" text="Enter the code">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="submit" layoutX="212.0" layoutY="239.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Submit" textFill="#f8f5f5" />
+      <Button fx:id="btnsubmit" layoutX="456.0" layoutY="29.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #23578C; -fx-cursor: hand;" text="Submit" textFill="#f8f5f5" />
+      <Label layoutX="71.0" layoutY="87.0" text="Question:" />
+      <Label fx:id="lblQuestion" layoutX="141.0" layoutY="87.0" text="Label" />
+      <Label fx:id="lblOption1" layoutX="141.0" layoutY="117.0" text="Label" />
+      <Label fx:id="lblOption2" layoutX="141.0" layoutY="144.0" text="Label" />
+      <Label fx:id="lblOption3" layoutX="141.0" layoutY="173.0" text="Label" />
+      <Label fx:id="lblOption4" layoutX="141.0" layoutY="200.0" text="Label" />
+      <Label layoutX="71.0" layoutY="244.0" text="Survey:" />
+      <Label layoutX="134.0" layoutY="244.0" text="How did you like the class?" />
+      <Rating fx:id="classRatings" layoutX="74.0" layoutY="267.0" rating="0.0" />
+      <Button fx:id="btnSubmitquiz" layoutX="129.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitQuiz" text="Submit" />
+      <RadioButton layoutX="51.0" layoutY="117.0" mnemonicParsing="false" text="Option 1:">
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton layoutX="50.0" layoutY="144.0" mnemonicParsing="false" text="Option 2:" toggleGroup="$toggleGroup" />
+      <RadioButton layoutX="50.0" layoutY="173.0" mnemonicParsing="false" text="Option 3:" toggleGroup="$toggleGroup" />
+      <RadioButton layoutX="51.0" layoutY="202.0" mnemonicParsing="false" text="Option 4:" toggleGroup="$toggleGroup" />
    </children>
 </AnchorPane>
