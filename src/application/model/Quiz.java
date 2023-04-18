@@ -26,7 +26,6 @@ public class Quiz {
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4, int rating,
 			String professor, String quizName, LocalDateTime endTime, List<Response> responses) {
-		super();
 		setQuestion(question);
 		setOption1(option1);
 		setOption2(option2);
@@ -41,7 +40,7 @@ public class Quiz {
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4,
 			String professor, long endMins, String quizName) {
-		super();
+
 		setQuestion(question);
 		setOption1(option1);
 		setOption2(option2);

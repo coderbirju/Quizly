@@ -6,7 +6,6 @@ public class Response {
 	private String rating;
 	
 	public Response(String choice, String student, String rating) {
-		super();
 		this.choice = choice;
 		this.student = student;
 		this.rating = rating;
