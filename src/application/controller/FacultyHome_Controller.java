@@ -46,7 +46,7 @@ public class FacultyHome_Controller {
     public void initialize() throws IOException {
     	
     	
-        System.out.println(quizList.toString());
+       // System.out.println(quizList.toString());
         
         colId.setCellValueFactory(new PropertyValueFactory<Quiz,String>("quizId"));
     	colName.setCellValueFactory(new PropertyValueFactory<Quiz,String>("QuizName"));
