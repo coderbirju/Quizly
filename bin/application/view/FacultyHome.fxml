@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="lblTitle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyHome_Controller">
+   <children>
+      <Label layoutX="237.0" layoutY="31.0" prefHeight="17.0" prefWidth="118.0" text="Your Quizes" />
+      <TableView fx:id="tblQuiz" layoutX="94.0" layoutY="127.0" prefHeight="200.0" prefWidth="412.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="113.0" text="Quiz Code" />
+          <TableColumn fx:id="colName" prefWidth="143.0" text="Quiz Name" />
+            <TableColumn fx:id="colDate" minWidth="9.0" prefWidth="155.0" text="Quiz Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
