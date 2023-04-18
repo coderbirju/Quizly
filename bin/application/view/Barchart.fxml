@@ -9,7 +9,7 @@
    <children>
       <BarChart fx:id="chartQuiz" layoutX="22.0" layoutY="23.0" prefHeight="361.0" prefWidth="537.0" title="Quiz answer analysis">
         <xAxis>
-          <CategoryAxis label="Choices" side="BOTTOM" />
+          <CategoryAxis label="Student Choices" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="Number of students" side="LEFT" />

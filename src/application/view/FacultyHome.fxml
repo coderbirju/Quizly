@@ -4,16 +4,19 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="lblTitle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyHome_Controller">
+<AnchorPane fx:id="lblTitle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FacultyHome_Controller">
    <children>
-      <Label layoutX="237.0" layoutY="31.0" prefHeight="17.0" prefWidth="118.0" text="Your Quizes" />
-      <TableView fx:id="tblQuiz" layoutX="94.0" layoutY="127.0" prefHeight="200.0" prefWidth="412.0">
+      <Label layoutX="210.0" layoutY="14.0" prefHeight="27.0" prefWidth="149.0" text="Your Quizes" textFill="#003366">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Label>
+      <TableView fx:id="tblQuiz" layoutX="53.0" layoutY="132.0" prefHeight="280.0" prefWidth="495.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="113.0" text="Quiz Code" />
-          <TableColumn fx:id="colName" prefWidth="143.0" text="Quiz Name" />
-            <TableColumn fx:id="colDate" minWidth="9.0" prefWidth="155.0" text="Quiz Date" />
+          <TableColumn fx:id="colId" prefWidth="141.0" text="Quiz Code" />
+          <TableColumn fx:id="colName" prefWidth="175.0" text="Quiz Name" />
+            <TableColumn fx:id="colDate" minWidth="9.0" prefWidth="178.0" text="Quiz Date" />
         </columns>
       </TableView>
    </children>

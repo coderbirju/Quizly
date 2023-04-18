@@ -105,8 +105,10 @@ public class ClassAttendance_Controller {
                 e.printStackTrace();
             }
         }
-        
- 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	alert.setHeaderText("Status");
+	        alert.setContentText("Download Sucess!");
+	        alert.showAndWait();
 
     }
     

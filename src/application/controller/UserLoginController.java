@@ -1,8 +1,7 @@
 package application.controller;
 
 import java.io.IOException;
-
-
+import java.util.Optional;
 
 import application.model.User;
 //import application.model.Professor;
@@ -11,12 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class UserLoginController {
@@ -63,7 +65,7 @@ public class UserLoginController {
 			User user = User.getInstance(username, password, role);
 			
 			if(user != null) {
-				lblStatus.setText("Login Sucess!");
+//				lblStatus.setText("Login Sucess!");
 //			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 	            String fxmlFile;
 	            Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
@@ -76,13 +78,26 @@ public class UserLoginController {
 	            	 fxmlFile = "";
 	            	 return;
 	            }
+//	        	Alert alert = new Alert(AlertType.INFORMATION);
+//	        	alert.setTitle("Login Success!");
+//	        	alert.setHeaderText(null);
+//	        	alert.setContentText("Welcome to Quizly "+username+ " !");
+//	        	alert.showAndWait();
+	            lblStatus.setText("Login Sucess!");
 	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
 	            Scene scene = new Scene(root);
-	            primaryStage.setTitle("User Login");
+	            primaryStage.setTitle("Faculty Dashboard");
 	            primaryStage.setScene(scene);
 	            primaryStage.show();
+	            
 	        } else {
+	        	Alert alert = new Alert(AlertType.ERROR);
+	        	alert.setTitle("Login Failed!");
+	        	alert.setHeaderText(null);
+	        	alert.setContentText("Please try again,Incorrect Username or password!");
+	        	alert.showAndWait();
 	            lblStatus.setText("Incorrect Username or password!");
+	            
 	        }
 		}
 		

@@ -8,57 +8,71 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.QuizAnalytics_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="561.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.QuizAnalytics_Controller">
    <children>
-      <Label layoutX="219.0" layoutY="14.0" text="Quiz Analytics">
+      <Label layoutX="187.0" layoutY="30.0" text="Quiz Analytics" textFill="#003366">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font></Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="77.0" prefHeight="20.0" prefWidth="85.0" text="Quiz Code">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="105.0" prefHeight="0.0" prefWidth="85.0" text="Quiz Code">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQuizCode2" layoutX="152.0" layoutY="108.0" />
-      <Button fx:id="btnSearch2" layoutX="328.0" layoutY="109.0" mnemonicParsing="false" onAction="#searchQuiz2">
+      <TextField fx:id="txtQuizCode2" layoutX="183.0" layoutY="102.0" />
+      <Button fx:id="btnSearch2" layoutX="372.0" layoutY="102.0" mnemonicParsing="false" onAction="#searchQuiz2" prefHeight="26.0" prefWidth="41.0" style="-fx-background-color: #26A65B;">
          <graphic>
-            <FontAwesomeIcon glyphName="SEARCH" wrappingWidth="12.071428298950195" />
+            <FontAwesomeIcon fill="#fcfcfc" glyphName="SEARCH" text="" wrappingWidth="12.071428298950195" />
          </graphic>
       </Button>
-      <Button fx:id="btnReset2" layoutX="397.0" layoutY="108.0" mnemonicParsing="false" onAction="#resetSearch" text="Reset">
+      <Button fx:id="btnReset2" layoutX="423.0" layoutY="103.0" mnemonicParsing="false" onAction="#resetSearch" style="-fx-background-color: #CF3A24;" text="Reset" textFill="#f8f7f7">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnAnalytics" layoutX="238.0" layoutY="331.0" mnemonicParsing="false" onAction="#quizAlanytics" prefHeight="26.0" prefWidth="125.0" text="View Analytics">
+      <Button fx:id="btnAnalytics" layoutX="190.0" layoutY="426.0" mnemonicParsing="false" onAction="#quizAlanytics" prefHeight="37.0" prefWidth="158.0" style="-fx-background-color: #003366; -fx-background-radius: 12px;" text="View Analytics" textFill="#f5f2f2">
          <graphic>
-            <FontAwesomeIcon glyphName="BAR_CHART" size="1.3em" text="" />
+            <FontAwesomeIcon fill="#f2eeee" glyphName="BAR_CHART" size="1.3em" text="" />
          </graphic>
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
       </Button>
-      <Label layoutX="153.0" layoutY="163.0" text="Option 1: ">
+      <Label layoutX="143.0" layoutY="274.0" text="Option 1: ">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="152.0" layoutY="200.0" text="Option 2: ">
+      <Label layoutX="144.0" layoutY="306.0" text="Option 2: ">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="152.0" layoutY="240.0" text="Option 3: ">
+      <Label layoutX="143.0" layoutY="340.0" text="Option 3: ">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="152.0" layoutY="274.0" text="Option 4: ">
+      <Label layoutX="143.0" layoutY="374.0" text="Option 4: ">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblOption1" layoutX="233.0" layoutY="163.0" text="Label" />
-      <Label fx:id="lblOption2" layoutX="232.0" layoutY="200.0" text="Label" />
-      <Label fx:id="lblOption3" layoutX="233.0" layoutY="239.0" text="Label" />
-      <Label fx:id="lblOption4" layoutX="233.0" layoutY="274.0" text="Label" />
-      <Rating fx:id="classRatings" layoutX="398.0" layoutY="35.0" rating="0.0" />
+      <Label fx:id="lblOption1" layoutX="223.0" layoutY="274.0" text="Label" />
+      <Label fx:id="lblOption2" layoutX="224.0" layoutY="306.0" text="Label" />
+      <Label fx:id="lblOption3" layoutX="224.0" layoutY="339.0" text="Label" />
+      <Label fx:id="lblOption4" layoutX="224.0" layoutY="374.0" text="Label" />
+      <Rating fx:id="classRatings" layoutX="187.0" layoutY="158.0" rating="0.0" />
+      <Label layoutX="66.0" layoutY="218.0" prefHeight="16.0" prefWidth="80.0" text="Question ">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOption11" layoutX="158.0" layoutY="220.0" text="Label" />
+      <Label layoutX="65.0" layoutY="163.0" prefHeight="22.0" prefWidth="114.0" text="Lecture Rating">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

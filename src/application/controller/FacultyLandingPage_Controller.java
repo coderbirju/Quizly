@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -45,7 +46,14 @@ public class FacultyLandingPage_Controller {
     @FXML
     private Button btnHome;
     
+    @FXML
+    private Label lblUser;
+	String name = User.getLoggedInUser().getUserName();
     public void initialize() throws IOException {
+//    	System.out.println(User.getLoggedInUser().getUserName());
+//    	System.out.println(name);
+//    	lblUser.setText(name);
+    	//lblUser.setText(name);
     	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/FacultyHome.fxml"));
     	borderPane.setCenter(view);
     }

@@ -29,7 +29,7 @@ public class User {
     		
     		MongoCollection<Document> collection = db.getCollection("users");
     		
-    		System.out.println("cString username, String password, String role " + username + password + role);
+    		//System.out.println("cString username, String password, String role " + username + password + role);
     		Document query = new Document("username", username).append("password", password).append("role", role);
     		Document user = collection.find(query).first();
     		if(user != null) {    			

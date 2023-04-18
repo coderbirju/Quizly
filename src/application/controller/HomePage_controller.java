@@ -20,7 +20,7 @@ public class HomePage_controller {
     	Stage primaryStage = (Stage) btnStart.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("Quizly");
+		primaryStage.setTitle("User Login");
 		primaryStage.setScene(scene);
 		primaryStage.show();
     }

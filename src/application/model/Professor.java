@@ -21,7 +21,7 @@ public class Professor extends User  {
 	
 	public Professor() {
 		super();
-		System.out.println("Inside professor -> this.loggedInUser = " + getUserName());
+		//System.out.println("Inside professor -> this.loggedInUser = " + getUserName());
 		quizzes = FXCollections.observableArrayList();
 		loggedInUser = User.getLoggedInUser();
 		fetchQuizzes();
