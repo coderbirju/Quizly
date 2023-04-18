@@ -21,8 +21,8 @@ public class Student extends User {
 		db = ConnectToDB.getInstance();
 		loggedInUser = User.getLoggedInUser();
 		// to be del
-		Quiz dummyQuiz = getQuiz("Fre640");
-		ApiResponse resp = submitQuiz("4", "4");
+		//Quiz dummyQuiz = getQuiz("Fre640");
+		//ApiResponse resp = submitQuiz("4", "4");
 		
 	}
 	
