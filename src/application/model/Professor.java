@@ -103,4 +103,40 @@ public class Professor extends User  {
 	}
 	
 	
+	public QuizAnalytics getQuizAnalytics(String quizId) {
+		QuizAnalytics analytics = new QuizAnalytics();
+		Quiz takenQuiz = null;
+		for(Quiz quiz : quizzes) {
+			if(quiz.getQuizId().equals(quizId)) {
+				takenQuiz = quiz;
+			}
+		}
+		
+		if(takenQuiz != null) {
+			long avgRating = 0;
+			long totalRating = 0;
+			List<Response> responses = takenQuiz.getResponses();
+			long numOfResponses = responses.size();
+			for(Response response : responses) {
+				totalRating += Long.parseLong(response.getRating());
+				switch(response.getChoice()) {
+					case "1": analytics.setOption1(analytics.getOption1() + 1);
+					break;
+					case "2": analytics.setOption2(analytics.getOption2() + 1);
+					break;
+					case "3": analytics.setOption3(analytics.getOption3() + 1);
+					break;
+					case "4": analytics.setOption4(analytics.getOption4() + 1);
+					break;
+				}
+			}
+			if(numOfResponses > 0) {
+				avgRating = totalRating/numOfResponses;
+				analytics.setAvgRating(avgRating);
+			}
+		}
+		
+		return analytics;
+	}
+	
 }
