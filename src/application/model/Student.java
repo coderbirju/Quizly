@@ -20,11 +20,9 @@ public class Student extends User {
 	public Student() {
 		db = ConnectToDB.getInstance();
 		loggedInUser = User.getLoggedInUser();
-		System.out.println("loggedInUser " + loggedInUser.getUserName());
 		// to be del
-		Quiz dummyQuiz = getQuiz("Soe994");
+		Quiz dummyQuiz = getQuiz("Fre640");
 		ApiResponse resp = submitQuiz("4", "4");
-		System.out.println(resp.getStatus() + " " + resp.getReason());
 		
 	}
 	
@@ -37,6 +35,7 @@ public class Student extends User {
 		if(quizDocument != null) {
 						
 			Quiz quiz = new Quiz(
+					quizDocument.getString("quizId"),
 					quizDocument.getString("question"),
 					quizDocument.getString("option1"),
 					quizDocument.getString("option2"),
@@ -68,7 +67,8 @@ public class Student extends User {
 			if(responseDocuments != null && responseDocuments.size() > 0) {
 				for (Document responseDocument : responseDocuments) {
 					Response response = new Response(responseDocument.getString("choice"),responseDocument.getString("Student"), responseDocument.getString("rating"));
-					if(response.getStudent() == getUserName()) {
+					
+					if(response.getStudent().equals(loggedInUser.getUserName())) {
 						apiResponse.setReason("User has already attempted quiz");
 						return apiResponse;
 					}
@@ -86,7 +86,6 @@ public class Student extends User {
 			apiResponse.setReason("Response added");
 			
 		}
-		System.out.println("Api response" + apiResponse.toString());
 		return apiResponse;
 	}
 

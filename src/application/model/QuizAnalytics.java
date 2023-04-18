@@ -5,7 +5,7 @@ public class QuizAnalytics {
 	private int option2;
 	private int option3;
 	private int option4;
-	private float avgRating;
+	private double avgRating;
 	
 	public QuizAnalytics(int option1, int option2, int option3, int option4, float avgRating) {
 		this.option1 = option1;
@@ -55,11 +55,11 @@ public class QuizAnalytics {
 		this.option4 = option4;
 	}
 
-	public float getAvgRating() {
+	public double getAvgRating() {
 		return avgRating;
 	}
 
-	public void setAvgRating(float avgRating) {
+	public void setAvgRating(double avgRating) {
 		this.avgRating = avgRating;
 	}
 

@@ -2,6 +2,7 @@ package application.controller;
 
 import java.io.IOException;
 
+import application.model.Student;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,7 @@ public class StudentLanding_Controller {
     void QuizPage(ActionEvent event) throws IOException {
     	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/QuizPage.fxml"));
     	borderPane.setCenter(view);
+    	Student student = new Student();
     }
 
     @FXML
