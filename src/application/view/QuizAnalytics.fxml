@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.QuizAnalytics_Controller">
    <children>
@@ -29,15 +30,35 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnAnalytics" layoutX="159.0" layoutY="213.0" mnemonicParsing="false" onAction="#quizAlanytics" prefHeight="26.0" prefWidth="125.0" text="View Analytics">
+      <Button fx:id="btnAnalytics" layoutX="238.0" layoutY="331.0" mnemonicParsing="false" onAction="#quizAlanytics" prefHeight="26.0" prefWidth="125.0" text="View Analytics">
          <graphic>
             <FontAwesomeIcon glyphName="BAR_CHART" size="1.3em" text="" />
          </graphic>
       </Button>
-      <Button fx:id="btnRatings" layoutX="332.0" layoutY="213.0" mnemonicParsing="false" onAction="#classRatings" prefHeight="26.0" prefWidth="125.0" text="Lecture Ratings">
-         <graphic>
-            <FontAwesomeIcon glyphName="STAR" text="" />
-         </graphic>
-      </Button>
+      <Label layoutX="153.0" layoutY="163.0" text="Option 1: ">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="200.0" text="Option 2: ">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="240.0" text="Option 3: ">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="274.0" text="Option 4: ">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOption1" layoutX="233.0" layoutY="163.0" text="Label" />
+      <Label fx:id="lblOption2" layoutX="232.0" layoutY="200.0" text="Label" />
+      <Label fx:id="lblOption3" layoutX="233.0" layoutY="239.0" text="Label" />
+      <Label fx:id="lblOption4" layoutX="233.0" layoutY="274.0" text="Label" />
+      <Rating fx:id="classRatings" layoutX="398.0" layoutY="35.0" rating="0.0" />
    </children>
 </AnchorPane>

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.controlsfx.control.Rating;
+
 import application.model.Professor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
 import javafx.stage.Stage;
@@ -32,6 +35,22 @@ public class QuizAnalytics_Controller {
 
     @FXML
     private TextField txtQuizCode2;
+    
+
+    @FXML
+    private Label lblOption1;
+
+    @FXML
+    private Label lblOption2;
+
+    @FXML
+    private Label lblOption3;
+
+    @FXML
+    private Label lblOption4;
+    
+    @FXML
+    private Rating classRatings;
 
     @FXML
     void classRatings(ActionEvent event) {
@@ -88,6 +107,9 @@ String quizId = txtQuizCode2.getText();
 
     	// Professor prof = new Professor();
     	 //barchartData = prof.getdata
+    	
+    	double rating = 3.4;
+    	classRatings.setRating(rating);
     }
 
 }
