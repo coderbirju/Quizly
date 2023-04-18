@@ -7,6 +7,7 @@ module Quizly {
 	requires org.mongodb.bson;
 	requires org.mongodb.driver.core;
 	requires fontawesomefx;
+	requires org.controlsfx.controls;
 	
 	opens application.controller to javafx.graphics, javafx.fxml;
 	opens application.model to javafx.graphics, javafx.fxml,javafx.base; 

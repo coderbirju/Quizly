@@ -60,6 +60,14 @@ public class CreateQuiz_Controller {
     	Long quizTime = Long.parseLong(txtQuizTime.getText());
     	String quizName = txtQuizName.getText();
     	
+    	if(question.isEmpty()||option1.isEmpty()||option2.isEmpty()||option3.isEmpty()||option4.isEmpty()||quizTime==0||quizName.isEmpty()) {
+      		 Alert alert = new Alert(Alert.AlertType.ERROR);
+      	        alert.setHeaderText("Error");
+      	        alert.setContentText("One or more field is empty!!");
+      	        alert.showAndWait();
+      	     return;
+      	}
+    	
     	String quizId = prof.createQuiz(question, option1, option2, option3, option4, quizName, quizTime);
     	lblQuizCode.setText(quizId);
     	

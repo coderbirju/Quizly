@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BarChart_Controller">
+   <children>
+      <BarChart fx:id="chartQuiz" layoutX="22.0" layoutY="23.0" prefHeight="361.0" prefWidth="537.0" title="Quiz answer analysis">
+        <xAxis>
+          <CategoryAxis label="Choices" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Number of students" side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>
