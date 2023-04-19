@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.io.IOException;
+
 import java.util.Optional;
 
 import application.model.User;
@@ -65,8 +66,6 @@ public class UserLoginController {
 			User user = User.getInstance(username, password, role);
 			
 			if(user != null) {
-//				lblStatus.setText("Login Sucess!");
-//			Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 	            String fxmlFile;
 	            Stage primaryStage = (Stage) txtUserName.getScene().getWindow();
 	            if (role.equals("PROFESSOR") && user.getRole().equals("PROFESSOR")) {
@@ -78,11 +77,6 @@ public class UserLoginController {
 	            	 fxmlFile = "";
 	            	 return;
 	            }
-//	        	Alert alert = new Alert(AlertType.INFORMATION);
-//	        	alert.setTitle("Login Success!");
-//	        	alert.setHeaderText(null);
-//	        	alert.setContentText("Welcome to Quizly "+username+ " !");
-//	        	alert.showAndWait();
 	            lblStatus.setText("Login Sucess!");
 	            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
 	            Scene scene = new Scene(root);
