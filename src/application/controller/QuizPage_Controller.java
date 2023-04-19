@@ -138,21 +138,31 @@ public class QuizPage_Controller {
         
         ApiResponse response = student.submitQuiz(selected, rating);
         System.out.println("response " + response.getStatus() + " reason " + response.getReason());
-       
-        if(selected.equals(quiz.getCorrectAnswer()))
-        {
-        Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Quiz Result pass");
-    	alert.setHeaderText(null);
-    	alert.setContentText("Congratulations your answer is correct!");
-    	 //alert.showAndWait();
-    	Optional<ButtonType> result = alert.showAndWait();
-    	if (result.isPresent() && result.get() == ButtonType.OK) {
-    	    // The user clicked the OK button
-    	 QuizPane.setVisible(false);
-    	}
-    	 return;
-
+        
+        if(response.getStatus().equals("Fail")) {
+        	Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText(response.getReason());
+            alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
+        	if (result.isPresent() && result.get() == ButtonType.OK) {
+        	    // The user clicked the OK button
+        	 QuizPane.setVisible(false);
+        	}
+        	 return;
+        } 
+        else if(selected.equals(quiz.getCorrectAnswer())) {
+	        Alert alert = new Alert(AlertType.INFORMATION);
+	    	alert.setTitle("Quiz Result pass");
+	    	alert.setHeaderText(null);
+	    	alert.setContentText("Congratulations your answer is correct!");
+	    	 //alert.showAndWait();
+	    	Optional<ButtonType> result = alert.showAndWait();
+	    	if (result.isPresent() && result.get() == ButtonType.OK) {
+	    	    // The user clicked the OK button
+	    	 QuizPane.setVisible(false);
+	    	}
+	    	 return;
         }
         
         else {

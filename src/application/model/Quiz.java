@@ -64,21 +64,17 @@ public class Quiz {
 		setQuizId(quizName.substring(0, 3) + randomNumber);
 		
 		LocalDateTime now = LocalDateTime.now();
-		ZoneId zoneId = ZoneId.systemDefault();
-		ZonedDateTime zonedDateTime = ZonedDateTime.of(now, zoneId);
-//		Date now = new Date();
-		System.out.println("zonedDateTime " + zonedDateTime);
-		System.out.println("zonedDateTime.plusMinutes(endMins) " + zonedDateTime.plusMinutes(endMins));
+		
 		
 		setEndTime(now.plusMinutes(endMins));
 		
 	}
 	
-	public static LocalDateTime convertToLocalDateTime(Date dateToConvert) {
-		LocalDateTime date = LocalDateTime.ofInstant(dateToConvert.toInstant(), ZoneId.systemDefault());
-		System.out.println("convertToLocalDateTime ============ " + date);
-        return date;
-    }
+//	public static LocalDateTime convertToLocalDateTime(Date dateToConvert) {
+//		LocalDateTime date = LocalDateTime.ofInstant(dateToConvert.toInstant(), ZoneId.systemDefault());
+//		System.out.println("convertToLocalDateTime ============ " + date);
+//        return date;
+//    }
 	
 	protected Quiz(String quizId, String quizName, LocalDateTime endTime) {
 		setQuizId(quizId);
@@ -117,6 +113,8 @@ public class Quiz {
 			ConnectToDB db = ConnectToDB.getInstance();
 			MongoCollection<Document> collection = db.getCollection("quiz");
 
+			DateConverterUtil converter = new DateConverterUtil();
+			String dateStr = converter.localDateTimeToString(this.getEndTime());
 			Document quizDocument = new Document()
 				.append("quizId", this.getQuizId())
 		        .append("question", this.getQuestion())
@@ -128,7 +126,7 @@ public class Quiz {
 		        .append("professor", this.getProfessor())
 		        .append("quizName", this.getQuizName())
 		        .append("correctAnswer", this.getCorrectAnswer())
-		        .append("endTime", this.getEndTime())
+		        .append("endTime", dateStr)
 		        .append("responses", new ArrayList<Document>());
 			
 			System.out.println("adding this quiz" + quizDocument.toString());

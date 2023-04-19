@@ -71,7 +71,7 @@ public class Professor extends User  {
 					quizDocument.getInteger("rating"),
 					quizDocument.getString("professor"),
 					quizDocument.getString("quizName"),
-					convertToLocalDateTime(quizDocument.getDate("endTime")),
+					convertToLocalDateTime(quizDocument.getString("endTime")),
 					responses
 					);
 //					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
@@ -92,8 +92,9 @@ public class Professor extends User  {
 	}
 	
 	
-	public static LocalDateTime convertToLocalDateTime(Date dateToConvert) {
-		LocalDateTime date = LocalDateTime.ofInstant(dateToConvert.toInstant(), ZoneId.systemDefault());
+	public static LocalDateTime convertToLocalDateTime(String dateToConvert) {
+		DateConverterUtil converter = new DateConverterUtil();
+		LocalDateTime date = converter.stringToDateTime(dateToConvert);
 		System.out.println("convertToLocalDateTime ============ " + date);
         return date;
     }
@@ -108,7 +109,7 @@ public class Professor extends User  {
 		
 		for(Document document : iterable) {
 			if(document != null) {
-				Quiz leanQuiz = new Quiz(document.getString("quizId"), document.getString("quizName"), document.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+				Quiz leanQuiz = new Quiz(document.getString("quizId"), document.getString("quizName"), convertToLocalDateTime(document.getString("endTime")));
 				this.quizzes.add(leanQuiz);
 			}
 		}
