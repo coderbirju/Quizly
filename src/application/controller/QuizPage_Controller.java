@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.RadioButton;
 
@@ -23,7 +24,7 @@ import application.model.Student;
 
 public class QuizPage_Controller {
 
-	private String currentQuizId;
+	//private String currentQuizId;
     @FXML
     private Button btnSubmitquiz;
 
@@ -71,11 +72,12 @@ public class QuizPage_Controller {
     private AnchorPane viewArea;
     
     Student student = new Student();
+	Quiz quiz;
 
     @FXML
     void submit(ActionEvent event) {
     	String quizId = txtQuizCode.getText();
-	   	Quiz quiz = student.getQuiz(quizId);
+	   	 quiz = student.getQuiz(quizId);
    	
    	if(quizId.isEmpty()) {
    		 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,6 +86,16 @@ public class QuizPage_Controller {
    	        alert.showAndWait();
    	        return;
    	}
+   	
+   	if(quiz==null) {
+   		Alert alert = new Alert(Alert.AlertType.ERROR);
+	        alert.setHeaderText("Error");
+	        alert.setContentText("Incorrect quiz ID or Time out!");
+	        alert.showAndWait();
+	        return;
+   	}
+   	
+   	
 
 	lblQuestion.setText(quiz.getQuestion());
 	lblOption1.setText(quiz.getOption1());
@@ -129,8 +141,26 @@ public class QuizPage_Controller {
         
         ApiResponse response = student.submitQuiz(selected, rating);
         System.out.println("response " + response.getStatus() + " reason " + response.getReason());
-
         
+        if(selected.equals(quiz.getCorrectAnswer()))
+        {
+        Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Quiz Result pass");
+    	alert.setHeaderText(null);
+    	alert.setContentText("Congratulations your answer is correct!");
+    	 alert.showAndWait();
+    	 return;
+
+        }
+        
+        else {
+        	Alert alert = new Alert(AlertType.ERROR);
+        	alert.setTitle("Quiz Result Fail");
+        	alert.setHeaderText(null);
+        	alert.setContentText("Oh no your answer is incorrect!");
+        	 alert.showAndWait();
+        	 return;
+        }
       }
 
 }

@@ -68,7 +68,7 @@
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblOption11" layoutX="158.0" layoutY="220.0" text="Label" />
+      <Label fx:id="lblQuestion" layoutX="158.0" layoutY="220.0" text="Label" />
       <Label layoutX="65.0" layoutY="163.0" prefHeight="22.0" prefWidth="114.0" text="Lecture Rating">
          <font>
             <Font name="Arial Black" size="14.0" />

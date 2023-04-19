@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class QuizAnalytics_Controller {
@@ -36,6 +37,8 @@ public class QuizAnalytics_Controller {
     @FXML
     private TextField txtQuizCode2;
     
+    @FXML
+    private Label lblQuestion;
 
     @FXML
     private Label lblOption1;
@@ -58,7 +61,9 @@ public class QuizAnalytics_Controller {
     }
 
     //List<Integer> barchartData = new ArrayList<>();
-	
+    public void initialize() throws IOException {
+    	classRatings.setDisable(true);
+    }
 	 
 	 
     
@@ -90,6 +95,7 @@ public class QuizAnalytics_Controller {
 
     @FXML
     void searchQuiz2(ActionEvent event) {
+    	
     	String quizId = txtQuizCode2.getText();
     	 Professor prof = new Professor();
     	Quiz quiz = prof.fetchQuizById(quizId);
@@ -106,7 +112,8 @@ public class QuizAnalytics_Controller {
     	QuizAnalytics analytics = prof.getQuizAnalytics(quizId);
     	double rating = analytics.getAvgRating();
     	classRatings.setRating(rating);
-    	System.out.println("rating counter"+rating);
+    	//System.out.println("rating counter"+rating);
+    	lblQuestion.setText(quiz.getQuestion());
     	lblOption1.setText(quiz.getOption1());
       	lblOption2.setText(quiz.getOption2());
       	lblOption3.setText(quiz.getOption3());
