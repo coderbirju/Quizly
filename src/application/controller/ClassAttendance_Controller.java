@@ -1,6 +1,7 @@
 package application.controller;
 import application.model.Professor;
 import application.model.Quiz;
+import application.model.QuizManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -58,9 +59,9 @@ public class ClassAttendance_Controller {
     	}
     	
     	//System.out.println("quiz ID from user is"+quizId);
-    	 Professor prof = new Professor();
-    	 Quiz quiz = prof.fetchQuizById(quizId);
-    	 List<String> studentList = prof.getQuizAttendance(quiz);
+    	QuizManager quizManager = new Professor();
+    	 Quiz quiz = quizManager.fetchQuizById(quizId);
+    	 List<String> studentList = quizManager.getQuizAttendance(quiz);
 //    	 for (String s : studentList) {
 //    		 txtResult.appendText(s + "\n");
 //    		}
@@ -84,9 +85,9 @@ public class ClassAttendance_Controller {
    	     return;
    	}
     	//System.out.println("quiz ID from user is"+quizId);
-    	 Professor prof = new Professor();
-    	 Quiz quiz = prof.fetchQuizById(quizId);
-    	 List<String> studentList = prof.getQuizAttendance(quiz);
+    	QuizManager quizManager = new Professor();
+   	 	Quiz quiz = quizManager.fetchQuizById(quizId);
+    	 List<String> studentList = quizManager.getQuizAttendance(quiz);
 
 
     	Stage primaryStage = (Stage) btnDownload.getScene().getWindow();
