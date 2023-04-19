@@ -12,11 +12,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class Professor extends User  {
+
+public class Professor extends User implements QuizManager  {
 	
 	private ObservableList<Quiz> quizzes;
 	private User loggedInUser;

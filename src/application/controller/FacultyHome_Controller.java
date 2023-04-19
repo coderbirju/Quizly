@@ -1,10 +1,12 @@
 package application.controller;
 
 import java.io.IOException;
+
 import java.time.LocalDateTime;
 
 import application.model.Professor;
 import application.model.Quiz;
+import application.model.QuizManager;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -37,9 +39,9 @@ public class FacultyHome_Controller {
  // Populate ObservableList with quiz data retrieved from MongoDB
   
 
-	Professor prof = new Professor();
+    QuizManager quizManager = new Professor();
 	
-    ObservableList<Quiz> quizList = prof.getQuizzes();
+    ObservableList<Quiz> quizList = quizManager.getQuizzes();
 	
  
     
