@@ -47,7 +47,7 @@ public class StudentLanding_Controller {
 
     @FXML
     void SignOut(ActionEvent event) throws IOException {
-    	Stage primaryStage = (Stage) btnTakeQuiz.getScene().getWindow();
+    	Stage primaryStage = (Stage) btnSignOut.getScene().getWindow();
     	User.signOut();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/view/UserLogin.fxml"));
 		Scene scene = new Scene(root);
