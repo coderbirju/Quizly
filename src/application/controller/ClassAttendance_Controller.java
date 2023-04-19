@@ -1,5 +1,6 @@
 package application.controller;
 import application.model.Professor;
+
 import application.model.Quiz;
 import application.model.QuizManager;
 import javafx.beans.property.SimpleStringProperty;
