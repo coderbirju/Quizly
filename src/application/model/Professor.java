@@ -11,8 +11,10 @@ import application.ConnectToDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Professor extends User  {
 	
@@ -28,11 +30,11 @@ public class Professor extends User  {
 	}
 
 
-	public String createQuiz(String question, String option1, String option2, String option3, String option4, String QuizName, long endMins) {
+	public String createQuiz(String question, String option1, String option2, String option3, String option4, String correctAns, String QuizName, long endMins) {
 		if(loggedInUser == null || loggedInUser.getRole() != "PROFESSOR") {
 			return "Not allowed";
 		}
-		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, loggedInUser.getUserName(), endMins, QuizName);
+		Quiz newQuiz = new Quiz(question, option1,option2,option3,option4, correctAns, loggedInUser.getUserName(), endMins, QuizName);
 		String uniqueId = newQuiz.saveQuiz();
 		return uniqueId;
 	}
@@ -65,12 +67,14 @@ public class Professor extends User  {
 					quizDocument.getString("option2"),
 					quizDocument.getString("option3"),
 					quizDocument.getString("option4"),
+					quizDocument.getString("correctAnswer"),
 					quizDocument.getInteger("rating"),
 					quizDocument.getString("professor"),
 					quizDocument.getString("quizName"),
-					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
+					convertToLocalDateTime(quizDocument.getDate("endTime")),
 					responses
 					);
+//					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
 			return quiz;
 		} else
 			return null;
@@ -86,6 +90,13 @@ public class Professor extends User  {
 		}
 		return studentNames;
 	}
+	
+	
+	public static LocalDateTime convertToLocalDateTime(Date dateToConvert) {
+		LocalDateTime date = LocalDateTime.ofInstant(dateToConvert.toInstant(), ZoneId.systemDefault());
+		System.out.println("convertToLocalDateTime ============ " + date);
+        return date;
+    }
 	
 	
 	public void fetchQuizzes() {

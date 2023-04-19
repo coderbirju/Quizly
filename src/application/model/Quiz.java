@@ -2,7 +2,10 @@ package application.model;
 
 import java.util.List;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import org.bson.Document;
@@ -17,6 +20,7 @@ public class Quiz {
 	private String option2;
 	private String option3;
 	private String option4;
+	private String correctAnswer;
 	private int rating;
 	private String Professor;
 	private String QuizName;
@@ -24,7 +28,7 @@ public class Quiz {
 	private LocalDateTime endTime;
 	private List<Response> Responses;
 	
-	public Quiz(String quizId, String question, String option1, String option2, String option3, String option4, int rating,
+	public Quiz(String quizId, String question, String option1, String option2, String option3, String option4, String correctAnswer, int rating,
 			String professor, String quizName, LocalDateTime endTime, List<Response> responses) {
 		setQuizId(quizId);
 		setQuestion(question);
@@ -34,13 +38,14 @@ public class Quiz {
 		setOption4(option4);
 		setRating(rating);
 		setEndTime(endTime);
+		setCorrectAnswer(correctAnswer);
 		setProfessor(professor);
 		setQuizName(quizName);
 		setResponses(responses);
 	}
 	
 	public Quiz(String question, String option1, String option2, String option3, String option4,
-			String professor, long endMins, String quizName) {
+			String correctAnswer,String professor, long endMins, String quizName) {
 
 		setQuestion(question);
 		setOption1(option1);
@@ -51,6 +56,7 @@ public class Quiz {
 		setEndTime(endTime);
 		setProfessor(professor);
 		setQuizName(quizName);
+		setCorrectAnswer(correctAnswer);
 		setResponses(new ArrayList<>());
 	
 		Random rand = new Random();
@@ -58,9 +64,21 @@ public class Quiz {
 		setQuizId(quizName.substring(0, 3) + randomNumber);
 		
 		LocalDateTime now = LocalDateTime.now();
+		ZoneId zoneId = ZoneId.systemDefault();
+		ZonedDateTime zonedDateTime = ZonedDateTime.of(now, zoneId);
+//		Date now = new Date();
+		System.out.println("zonedDateTime " + zonedDateTime);
+		System.out.println("zonedDateTime.plusMinutes(endMins) " + zonedDateTime.plusMinutes(endMins));
+		
 		setEndTime(now.plusMinutes(endMins));
 		
 	}
+	
+	public static LocalDateTime convertToLocalDateTime(Date dateToConvert) {
+		LocalDateTime date = LocalDateTime.ofInstant(dateToConvert.toInstant(), ZoneId.systemDefault());
+		System.out.println("convertToLocalDateTime ============ " + date);
+        return date;
+    }
 	
 	protected Quiz(String quizId, String quizName, LocalDateTime endTime) {
 		setQuizId(quizId);
@@ -109,6 +127,7 @@ public class Quiz {
 		        .append("rating", this.getRating())
 		        .append("professor", this.getProfessor())
 		        .append("quizName", this.getQuizName())
+		        .append("correctAnswer", this.getCorrectAnswer())
 		        .append("endTime", this.getEndTime())
 		        .append("responses", new ArrayList<Document>());
 			
@@ -181,6 +200,14 @@ public class Quiz {
 	}
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
 	}
 	
 	

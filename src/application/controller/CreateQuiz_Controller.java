@@ -57,6 +57,7 @@ public class CreateQuiz_Controller {
     	String option2 = txtOption2.getText();
     	String option3 = txtOption3.getText();
     	String option4 = txtOption4.getText();
+    	String correctAns = "1";
     	Long quizTime = Long.parseLong(txtQuizTime.getText());
     	String quizName = txtQuizName.getText();
     	
@@ -68,7 +69,7 @@ public class CreateQuiz_Controller {
       	     return;
       	}
     	
-    	String quizId = prof.createQuiz(question, option1, option2, option3, option4, quizName, quizTime);
+    	String quizId = prof.createQuiz(question, option1, option2, option3, option4, correctAns,  quizName, quizTime);
     	lblQuizCode.setText(quizId);
     	
     	Alert alert = new Alert(AlertType.INFORMATION);

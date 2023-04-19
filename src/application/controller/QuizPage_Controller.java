@@ -2,28 +2,21 @@ package application.controller;
 
 
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.RadioButton;
 
-import java.io.IOException;
-import java.time.ZoneId;
-import java.util.ArrayList;
-
-import org.bson.Document;
 import org.controlsfx.control.Rating;
 
-import com.mongodb.client.MongoCollection;
 
 import application.model.ApiResponse;
-import application.model.Professor;
 import application.model.Quiz;
-import application.model.QuizAnalytics;
 import application.model.Student;
 
 
@@ -57,18 +50,32 @@ public class QuizPage_Controller {
 
     @FXML
     private ToggleGroup toggleGroup;
+    
+
+    @FXML
+    private RadioButton radioOption1;
+
+    @FXML
+    private RadioButton radioOption2;
+
+    @FXML
+    private RadioButton radioOption3;
+
+    @FXML
+    private RadioButton radioOption4;
 
     @FXML
     private TextField txtQuizCode;
 
     @FXML
     private AnchorPane viewArea;
+    
+    Student student = new Student();
 
     @FXML
     void submit(ActionEvent event) {
     	String quizId = txtQuizCode.getText();
-   	 Professor prof = new Professor();
-   	Quiz quiz = prof.fetchQuizById(quizId);
+	   	Quiz quiz = student.getQuiz(quizId);
    	
    	if(quizId.isEmpty()) {
    		 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -77,9 +84,6 @@ public class QuizPage_Controller {
    	        alert.showAndWait();
    	        return;
    	}
-   	
-   	Quiz quiz1 = prof.fetchQuizById(quizId);
-	
 
 	lblQuestion.setText(quiz.getQuestion());
 	lblOption1.setText(quiz.getOption1());
@@ -109,6 +113,23 @@ public class QuizPage_Controller {
             alert.showAndWait();
             return;
         }
+        
+        String selected = "";
+        
+        if(radioOption1.isSelected()) {
+        	selected = "1";
+        } else if(radioOption2.isSelected()) {
+        	selected = "2";
+        } else if(radioOption3.isSelected()) {
+        	selected = "3";
+        } else if(radioOption4.isSelected()) {
+        	selected = "4";
+        }
+        String rating = Double.toString(classRatings.getRating());
+        
+        ApiResponse response = student.submitQuiz(selected, rating);
+        System.out.println("response " + response.getStatus() + " reason " + response.getReason());
+
         
       }
 
