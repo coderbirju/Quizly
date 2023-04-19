@@ -73,7 +73,7 @@ public class QuizPage_Controller {
     @FXML
     void submit(ActionEvent event) {
     	String quizId = txtQuizCode.getText();
-	   	 quiz = student.getQuiz(quizId);
+	   
    	
    	if(quizId.isEmpty()) {
    		 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -82,6 +82,8 @@ public class QuizPage_Controller {
    	        alert.showAndWait();
    	        return;
    	}
+   	
+	 quiz = student.getQuiz(quizId);
    	
    	if(quiz==null) {
    		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -137,7 +139,7 @@ public class QuizPage_Controller {
         String rating = Double.toString(classRatings.getRating());
         
         ApiResponse response = student.submitQuiz(selected, rating);
-        System.out.println("response " + response.getStatus() + " reason " + response.getReason());
+        //System.out.println("response " + response.getStatus() + " reason " + response.getReason());
         
         if(response.getStatus().equals("Fail")) {
         	Alert alert = new Alert(Alert.AlertType.ERROR);

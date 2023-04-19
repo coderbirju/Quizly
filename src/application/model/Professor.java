@@ -127,12 +127,12 @@ public class Professor extends User implements QuizManager  {
 		
 		if(takenQuiz != null) {
 			
-			long avgRating = 0;
-			long totalRating = 0;
+			double avgRating = 0;
+			double totalRating = 0;
 			List<Response> responses = takenQuiz.getResponses();
 			long numOfResponses = responses.size();
 			for(Response response : responses) {
-				totalRating += Long.parseLong(response.getRating());
+				totalRating += Double.parseDouble(response.getRating());
 				switch(response.getChoice()) {
 					case "1": analytics.setOption1(analytics.getOption1() + 1);
 					break;
