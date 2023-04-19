@@ -9,6 +9,7 @@ import java.util.List;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 import application.ConnectToDB;
 
@@ -34,7 +35,9 @@ public class Student extends User {
 		System.out.println("outside quizDocument ");
 		if(quizDocument != null) {
 			System.out.println("inside quizDocument " );
-						
+			
+			String dateStr = quizDocument.getString("endTime");
+			LocalDateTime convertedDatetime = convertToLocalDateTime(dateStr);
 			Quiz quiz = new Quiz(
 					quizDocument.getString("quizId"),
 					quizDocument.getString("question"),
@@ -46,21 +49,17 @@ public class Student extends User {
 					quizDocument.getInteger("rating"),
 					quizDocument.getString("professor"),
 					quizDocument.getString("quizName"),
-					quizDocument.getDate("endTime").toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
+					convertedDatetime,
 					new ArrayList<>()
 					);
-//			LocalDateTime now = LocalDateTime.now();
-//			ZoneId zoneId = ZoneId.systemDefault();
-//			ZonedDateTime zonedDateTime = ZonedDateTime.of(now, zoneId);
-//			System.out.println("zonedDateTime " + zonedDateTime + "quiz.getEndTime() " + quiz.getEndTime());
-//			System.out.println("zonedDateTime.isBefore(quiz.getEndTime() " + quiz.getEndTime().isAfter(zonedDateTime.toLocalDateTime()));
+			
 			System.out.println("quiz inside getQuiz " + quiz.toString() + quiz.getQuizId());
-			return quiz;
-//			if(now.isBefore(quiz.getEndTime())) {
-//				return quiz;				
-//			}
-//			else 
-//				return null;
+			LocalDateTime now = LocalDateTime.now();
+			if(now.isBefore(quiz.getEndTime())) {
+				return quiz;				
+			}
+			else 
+				return null;
 		} else
 			return null;
 	}
@@ -97,5 +96,12 @@ public class Student extends User {
 		}
 		return apiResponse;
 	}
+	
+	public static LocalDateTime convertToLocalDateTime(String dateToConvert) {
+		DateConverterUtil converter = new DateConverterUtil();
+		LocalDateTime date = converter.stringToDateTime(dateToConvert);
+		System.out.println("convertToLocalDateTime ============ " + date);
+        return date;
+    }
 
 }
