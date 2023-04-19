@@ -26,6 +26,9 @@ public class CreateQuiz_Controller {
 
     @FXML
     private Label lblQuizCode;
+    
+    @FXML
+    private TextField txtAns;
 
     @FXML
     private TextArea txtOption1;
@@ -57,7 +60,7 @@ public class CreateQuiz_Controller {
     	String option2 = txtOption2.getText();
     	String option3 = txtOption3.getText();
     	String option4 = txtOption4.getText();
-    	String correctAns = "1";
+    	String correctAns = txtAns.getText();
     	Long quizTime = Long.parseLong(txtQuizTime.getText());
     	String quizName = txtQuizName.getText();
     	

@@ -24,27 +24,27 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="322.0" text="Option 2">
+      <Label layoutX="97.0" layoutY="310.0" text="Option 2">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="398.0" text="Option 3">
+      <Label layoutX="98.0" layoutY="377.0" text="Option 3">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="478.0" text="Option 4">
+      <Label layoutX="97.0" layoutY="452.0" text="Option 4">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
       <TextArea fx:id="txtQuestion" layoutX="95.0" layoutY="193.0" prefHeight="17.0" prefWidth="505.0" />
       <TextArea fx:id="txtOption1" layoutX="94.0" layoutY="257.0" prefHeight="34.0" prefWidth="505.0" />
-      <TextArea fx:id="txtOption2" layoutX="95.0" layoutY="338.0" prefHeight="41.0" prefWidth="505.0" />
-      <TextArea fx:id="txtOption3" layoutX="95.0" layoutY="414.0" prefHeight="22.0" prefWidth="505.0" />
-      <TextArea fx:id="txtOption4" layoutX="94.0" layoutY="494.0" prefHeight="22.0" prefWidth="505.0" />
-      <Button fx:id="btnCreateQuiz" layoutX="277.0" layoutY="565.0" mnemonicParsing="false" onAction="#newQuiz" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #003366;" text="Submit" textFill="#fcfafa">
+      <TextArea fx:id="txtOption2" layoutX="92.0" layoutY="324.0" prefHeight="41.0" prefWidth="505.0" />
+      <TextArea fx:id="txtOption3" layoutX="92.0" layoutY="392.0" prefHeight="22.0" prefWidth="505.0" />
+      <TextArea fx:id="txtOption4" layoutX="90.0" layoutY="467.0" prefHeight="22.0" prefWidth="505.0" />
+      <Button fx:id="btnCreateQuiz" layoutX="274.0" layoutY="570.0" mnemonicParsing="false" onAction="#newQuiz" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #003366;" text="Submit" textFill="#fcfafa">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -72,5 +72,11 @@
          </font>
       </Label>
       <TextArea fx:id="txtQuizName" layoutX="95.0" layoutY="121.0" prefHeight="9.0" prefWidth="167.0" />
+      <Label layoutX="94.0" layoutY="523.0" prefHeight="17.0" prefWidth="53.0" text="Answer">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAns" layoutX="154.0" layoutY="518.0" />
    </children>
 </AnchorPane>

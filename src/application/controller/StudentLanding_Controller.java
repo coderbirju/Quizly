@@ -30,13 +30,20 @@ public class StudentLanding_Controller {
     
     @FXML
     private AnchorPane viewArea;
-
-    @FXML
-    void QuizPage(ActionEvent event) throws IOException {
+    
+    
+    public void initialize() throws IOException {
     	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/QuizPage.fxml"));
     	borderPane.setCenter(view);
     	Student student = new Student();
     }
+
+//    @FXML
+//    void QuizPage(ActionEvent event) throws IOException {
+//    	AnchorPane view = FXMLLoader.load(getClass().getResource("/application/view/QuizPage.fxml"));
+//    	borderPane.setCenter(view);
+//    	Student student = new Student();
+//    }
 
     @FXML
     void SignOut(ActionEvent event) throws IOException {

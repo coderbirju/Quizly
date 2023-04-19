@@ -4,13 +4,20 @@ package application.controller;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.RadioButton;
+
+import java.util.Optional;
 
 import org.controlsfx.control.Rating;
 
@@ -23,7 +30,7 @@ import application.model.Student;
 
 public class QuizPage_Controller {
 
-	private String currentQuizId;
+	//private String currentQuizId;
     @FXML
     private Button btnSubmitquiz;
 
@@ -32,18 +39,6 @@ public class QuizPage_Controller {
 
     @FXML
     private Rating classRatings;
-
-    @FXML
-    private Label lblOption1;
-
-    @FXML
-    private Label lblOption2;
-
-    @FXML
-    private Label lblOption3;
-
-    @FXML
-    private Label lblOption4;
     
     @FXML
     private Label lblQuestion;
@@ -51,6 +46,8 @@ public class QuizPage_Controller {
     @FXML
     private ToggleGroup toggleGroup;
     
+    @FXML
+    private AnchorPane QuizPane;
 
     @FXML
     private RadioButton radioOption1;
@@ -71,11 +68,12 @@ public class QuizPage_Controller {
     private AnchorPane viewArea;
     
     Student student = new Student();
+	Quiz quiz;
 
     @FXML
     void submit(ActionEvent event) {
     	String quizId = txtQuizCode.getText();
-	   	Quiz quiz = student.getQuiz(quizId);
+	   	 quiz = student.getQuiz(quizId);
    	
    	if(quizId.isEmpty()) {
    		 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,13 +82,24 @@ public class QuizPage_Controller {
    	        alert.showAndWait();
    	        return;
    	}
+   	
+   	if(quiz==null) {
+   		Alert alert = new Alert(Alert.AlertType.ERROR);
+	        alert.setHeaderText("Error");
+	        alert.setContentText("Incorrect quiz ID or Time out!");
+	        alert.showAndWait();
+	        return;
+   	}
+   	
+   	
 
 	lblQuestion.setText(quiz.getQuestion());
-	lblOption1.setText(quiz.getOption1());
-  	lblOption2.setText(quiz.getOption2());
-  	lblOption3.setText(quiz.getOption3());
-  	lblOption4.setText(quiz.getOption4());
+	radioOption1.setText(quiz.getOption1());
+	radioOption2.setText(quiz.getOption2());
+	radioOption3.setText(quiz.getOption3());
+	radioOption4.setText(quiz.getOption4());
   	
+	QuizPane.setVisible(true);
   	
    	
     }
@@ -129,8 +138,36 @@ public class QuizPage_Controller {
         
         ApiResponse response = student.submitQuiz(selected, rating);
         System.out.println("response " + response.getStatus() + " reason " + response.getReason());
+       
+        if(selected.equals(quiz.getCorrectAnswer()))
+        {
+        Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Quiz Result pass");
+    	alert.setHeaderText(null);
+    	alert.setContentText("Congratulations your answer is correct!");
+    	 //alert.showAndWait();
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.isPresent() && result.get() == ButtonType.OK) {
+    	    // The user clicked the OK button
+    	 QuizPane.setVisible(false);
+    	}
+    	 return;
 
+        }
         
+        else {
+        	Alert alert = new Alert(AlertType.ERROR);
+        	alert.setTitle("Quiz Result Fail");
+        	alert.setHeaderText(null);
+        	alert.setContentText("Oh no your answer is incorrect!");
+        	// alert.showAndWait();
+        	 Optional<ButtonType> result = alert.showAndWait();
+         	if (result.isPresent() && result.get() == ButtonType.OK) {
+         	    // The user clicked the OK button
+         	 QuizPane.setVisible(false);
+         	}
+        	 return;
+        }
       }
 
 }
