@@ -18,10 +18,12 @@ The Model represents the data and the business logic of the application. It cont
 The View is responsible for the presentation of data to the user. It includes classes that generate the user interface, Fxml pages and graphical components.
 
 The Controller acts as an intermediary between the View and the Model. It handles user input, updates the Model, and sends updated data to the View for display.
-<img width="397" alt="image" src="./assets/img1.png">
+
+
+<img width="500" alt="image" src="./assets/img1.png">
 
 ### Class Diagram
-<img width="397" alt="classDiagram" src="./assets/classDia.jpg">
+<img width="500" alt="classDiagram" src="./assets/classDia.jpg">
 
 
 ## External Libraries
@@ -33,11 +35,11 @@ The Controller acts as an intermediary between the View and the Model. It handle
 ## Screenshots
 
 ### Login Page
-<img width="397" alt="classDiagram" src="./assets/classDia.jpg">
+<img width="500" alt="classDiagram" src="./assets/classDia.jpg">
 
 ### Faculty Dashboards
-<img width="397" alt="classDiagram" src="./assets/Dash1.png">
+<img width="500" alt="classDiagram" src="./assets/Dash1.png">
 
-<img width="397" alt="classDiagram" src="./assets/Dash2.png">
+<img width="500" alt="classDiagram" src="./assets/Dash2.png">
 
-<img width="397" alt="classDiagram" src="./assets/Analytics.png">
+<img width="500" alt="classDiagram" src="./assets/Analytics.png">
