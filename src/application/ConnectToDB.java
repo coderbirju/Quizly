@@ -20,7 +20,7 @@ public class ConnectToDB {
 
     private ConnectToDB() {
         // Create a new MongoDB client instance
-        mongoClient = MongoClients.create("mongodb+srv://arjunraja:1TGctWNgmdWyekKS@northeastern.a0ay7eg.mongodb.net/?retryWrites=true&w=majority");
+        mongoClient = MongoClients.create("mongodb+srv://<add_your_srv_here>");
 
         // Get a reference to the database and collection
         database = mongoClient.getDatabase(DATABASE_NAME);
